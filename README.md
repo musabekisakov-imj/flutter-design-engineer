@@ -67,6 +67,10 @@ Each skill is self-contained: install one specialist or the full set without bro
 
 ### Quick Start
 
+> **Want a guided setup?** Open the
+> [Interactive Install Guide](https://musabekisakov-imj.github.io/flutter-design-engineer/)
+> for agent-specific commands, copy controls, verification, and troubleshooting.
+
 > [!TIP]
 > **Recommended — one command, guided setup.** The open
 > [skills CLI](https://skills.sh/docs/cli) detects supported agents, lets you
