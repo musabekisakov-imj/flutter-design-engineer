@@ -49,6 +49,20 @@ audit → product direction → semantic system → adaptive implementation
       → accessibility + motion → rendered visual QA → refinement
 ```
 
+## A complete customer journey
+
+The second fixture follows one premium barbershop booking from service selection through confirmation. It adds forms, validation, unavailable slots, recovery, safe revision, 200% text scaling, and a real tablet recomposition.
+
+| Service | Barber | Date and time |
+| --- | --- | --- |
+| ![Editorial service selection](examples/barbershop-booking/demo/goldens/phone-service.png) | ![Editorial barber selection](examples/barbershop-booking/demo/goldens/phone-barber.png) | ![Editorial availability selection](examples/barbershop-booking/demo/goldens/phone-availability.png) |
+
+| Review | Confirmation | Recoverable availability error |
+| --- | --- | --- |
+| ![Booking review](examples/barbershop-booking/demo/goldens/phone-review.png) | ![Booking confirmation](examples/barbershop-booking/demo/goldens/phone-confirmation.png) | ![Recoverable availability error](examples/barbershop-booking/demo/goldens/phone-availability-error.png) |
+
+The [case-study source and verification notes](examples/barbershop-booking/README.md) distinguish authored prototype work from Flutter evidence. The separate [HTML design companion](docs/prototypes/editorial-barbershop-booking/) was used for direction review only; the screenshots above were rendered by Flutter golden tests.
+
 ## Skills
 
 | Skill | Purpose |

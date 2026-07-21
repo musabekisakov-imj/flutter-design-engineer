@@ -17,6 +17,120 @@
   --shadow: 0 24px 80px rgb(0 0 0 / 28%);
 }
 
+/* Editorial booking evidence */
+.booking-showcase {
+  padding: 112px 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.booking-showcase-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(40px, 8vw, 120px);
+  align-items: end;
+  margin-bottom: 58px;
+}
+
+.booking-showcase-heading h2 {
+  margin: 0;
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: .96;
+  letter-spacing: -.055em;
+}
+
+.booking-showcase-heading > div:last-child {
+  max-width: 470px;
+}
+
+.booking-showcase-heading p,
+.booking-proof-grid article > p:not(.eyebrow) {
+  color: var(--muted-strong);
+  line-height: 1.65;
+}
+
+.booking-showcase-heading a {
+  display: inline-flex;
+  margin-top: 14px;
+  color: var(--accent-strong);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.booking-phone-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 22px);
+  align-items: end;
+}
+
+.booking-phone-row figure {
+  margin: 0;
+}
+
+.booking-phone-row img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  box-shadow: 0 22px 58px rgba(27, 37, 34, .12);
+}
+
+.booking-phone-row figcaption {
+  padding: 12px 2px 0;
+  color: var(--muted-strong);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.booking-proof-grid {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 22px;
+  margin-top: 70px;
+}
+
+.booking-proof-grid article {
+  min-width: 0;
+  padding: clamp(24px, 3vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface-2);
+}
+
+.booking-proof-grid h3 {
+  margin: 12px 0;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -.035em;
+}
+
+.booking-proof-grid img {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .booking-showcase-heading,
+  .booking-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-phone-row {
+    grid-template-columns: repeat(5, minmax(210px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+  }
+
+  .booking-phone-row figure {
+    scroll-snap-align: start;
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
