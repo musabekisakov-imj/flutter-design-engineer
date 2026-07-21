@@ -59,7 +59,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .command button.is-copied { border-color: var(--success); color: var(--success); }
 
 .hero-visual { position: relative; min-height: 610px; }
-.hero-phone { position: absolute; display: block; overflow: hidden; width: min(52%, 270px); border: 1px solid rgb(255 255 255 / 20%); border-radius: 28px; background: #12191f; box-shadow: var(--shadow); transition: transform .35s var(--ease), border-color .25s var(--ease); }
+.hero-phone { position: absolute; display: block; overflow: hidden; width: min(56%, 300px); border: 1px solid rgb(255 255 255 / 20%); border-radius: 28px; background: #12191f; box-shadow: var(--shadow); transition: transform .35s var(--ease), border-color .25s var(--ease); }
 .hero-phone img { display: block; width: 100%; height: auto; }
 .hero-phone-primary { z-index: 2; left: 2%; top: 78px; transform: rotate(-5deg); }
 .hero-phone-secondary { z-index: 1; right: 2%; top: 12px; transform: rotate(5deg); }
@@ -107,10 +107,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .panel-output strong { font-size: .9rem; }
 .skill-panels .command { margin-top: auto; }
 
-.phone-rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: end; }
-.phone-rail figure { margin: 0; }
+.phone-rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.6vw, 48px) clamp(18px, 2.4vw, 30px); align-items: start; }
+.phone-rail figure { margin: 0; min-width: 0; }
 .phone-rail img { display: block; width: 100%; border: 1px solid var(--line-strong); border-radius: 18px; box-shadow: 0 24px 65px rgb(0 11 18 / 28%); }
-.phone-rail figcaption { padding: 12px 2px 0; color: var(--muted); font-size: .68rem; font-weight: 700; }
+.phone-rail figcaption { display: flex; align-items: center; gap: 9px; padding: 14px 2px 0; color: var(--muted-strong); font-size: .74rem; font-weight: 700; }
+.phone-rail figcaption strong { color: var(--accent-light); font-family: monospace; font-size: .66rem; }
 .evidence-proof-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 18px; margin-top: 72px; }
 .evidence-proof-grid article { min-width: 0; overflow: hidden; display: grid; align-items: center; gap: 28px; padding: clamp(25px, 3.6vw, 48px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .proof-error { grid-template-columns: .9fr minmax(140px, .55fr); }
@@ -184,7 +185,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .skill-tabs button { border-right: 1px solid var(--line); }
   .skill-tabs button:nth-child(even) { border-right: 0; }
   .skill-tabs button[aria-selected="true"] { box-shadow: inset 0 -3px var(--accent); }
-  .phone-rail { grid-template-columns: repeat(5, minmax(220px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 18px; }
+  .phone-rail { grid-template-columns: repeat(6, minmax(270px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 18px; }
   .phone-rail figure { scroll-snap-align: start; }
   .evidence-proof-grid, .technical, .final-cta { grid-template-columns: 1fr; }
   .agent-tabs { grid-template-columns: 1fr 1fr; }
@@ -221,6 +222,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .skill-tabs button { min-height: 56px; border-right: 0; }
   .skill-panels article { padding: 28px 20px; }
   .skill-panels h3 { font-size: 2.15rem; }
+  .phone-rail { grid-template-columns: repeat(6, minmax(300px, 82vw)); margin-right: -14px; }
   .proof-error, .proof-adaptive { grid-template-columns: 1fr; }
   .proof-error img { width: min(70%, 260px); justify-self: center; }
   .agent-tabs button { min-height: 92px; grid-template-columns: 34px 1fr; padding: 13px; }

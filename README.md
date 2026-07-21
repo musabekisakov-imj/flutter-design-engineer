@@ -28,6 +28,20 @@ inspect → understand → direct → model states → implement → render → 
 
 This table describes workflow requirements, not measured model results. The [reproducible benchmark protocol](benchmarks/connected-command-center) is ready; Claude, Codex, and Grok rows remain pending until each has completed a controlled baseline and skill-guided pair.
 
+## Flutter Product Studio
+
+The primary mobile showcase is a deterministic AI-assisted workspace for Flutter teams. One Aurora project moves through Workspace, AI Audit, Design System, Adaptive Preview, Visual QA, and Release using a single cross-platform design system.
+
+| Workspace | AI Audit | Design System |
+| --- | --- | --- |
+| ![Product Studio workspace](examples/product-studio/demo/goldens/phone-workspace.png) | ![Prioritized AI audit](examples/product-studio/demo/goldens/phone-audit.png) | ![Semantic Flutter design system](examples/product-studio/demo/goldens/phone-system.png) |
+
+| Adaptive Preview | Visual QA | Release |
+| --- | --- | --- |
+| ![Phone and tablet adaptive preview](examples/product-studio/demo/goldens/phone-adaptive.png) | ![Golden screenshot difference review](examples/product-studio/demo/goldens/phone-visualQa.png) | ![Evidence-backed release readiness](examples/product-studio/demo/goldens/phone-release.png) |
+
+These are committed Flutter golden-test outputs generated from local fixture data. The example does not call a live AI service or production backend. See the [source, states, and verification commands](examples/product-studio/README.md).
+
 ## One connected quality bar
 
 The repository includes a real, deterministic Flutter fixture connecting an AI workspace, project pulse, finance summary, and travel plan. It is one Flutter codebase adapting the same models and components across screen sizes—not separate mobile and web implementations.
