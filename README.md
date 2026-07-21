@@ -67,92 +67,118 @@ Each skill is self-contained: install one specialist or the full set without bro
 
 ### Quick Start
 
-The fastest path for Claude Code, Codex, Gemini CLI, Cursor, and other
-skill-aware agents is the open [skills CLI](https://skills.sh/docs/cli):
+> [!TIP]
+> **Recommended — one command, guided setup.** The open
+> [skills CLI](https://skills.sh/docs/cli) detects supported agents, lets you
+> choose the destination, and installs all seven Flutter specialists.
 
 ```bash
 npx skills add musabekisakov-imj/flutter-design-engineer
 ```
 
-Browse the seven skills before installing:
+**Requires:** Node.js with `npx` · **Installs:** 7 self-contained skills ·
+**Works with:** Claude Code, Codex, Gemini CLI, Cursor, and other skill-aware
+agents. Start a new agent session when installation finishes.
+
+Want to inspect the package first?
 
 ```bash
 npx skills add musabekisakov-imj/flutter-design-engineer --list
 ```
 
+### Choose your agent
+
 <table>
   <tr>
-    <td align="center" width="25%">
-      <img src="assets/agents/claude.png" width="48" height="48" alt="Claude logo"><br>
-      <strong>Claude Code</strong>
+    <td width="50%" valign="top">
+      <p><img src="assets/agents/claude.png" width="44" height="44" alt="Claude Code logo"></p>
+      <h3>Claude Code</h3>
+      <p><strong>Personal · all projects</strong></p>
+      <p>Best when you want the Flutter workflow available in every Claude Code session.</p>
+      <p><strong>Destination</strong><br><code>~/.claude/skills</code></p>
+      <p><strong>From an existing clone</strong><br><code>python3 scripts/install.py --destination ~/.claude/skills</code></p>
     </td>
-    <td align="center" width="25%">
-      <img src="assets/agents/codex.png" width="48" height="48" alt="Codex app icon"><br>
-      <strong>Codex</strong>
+    <td width="50%" valign="top">
+      <p><img src="assets/agents/codex.png" width="44" height="44" alt="Codex app icon"></p>
+      <h3>Codex</h3>
+      <p><strong>Personal · all projects</strong></p>
+      <p>Best when the complete design-to-verification workflow should be available across Codex tasks.</p>
+      <p><strong>Destination</strong><br><code>~/.codex/skills</code></p>
+      <p><strong>From an existing clone</strong><br><code>python3 scripts/install.py --destination ~/.codex/skills</code></p>
     </td>
-    <td align="center" width="25%">
-      <img src="assets/agents/gemini.png" width="48" height="48" alt="Gemini app icon"><br>
-      <strong>Gemini CLI</strong>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p><img src="assets/agents/gemini.png" width="44" height="44" alt="Gemini CLI app icon"></p>
+      <h3>Gemini CLI</h3>
+      <p><strong>Project · current repository</strong></p>
+      <p>Best for a project-owned setup that can travel with the repository when committed.</p>
+      <p><strong>Destination</strong><br><code>.gemini/skills</code></p>
+      <p><strong>From an existing clone</strong><br><code>python3 scripts/install.py --destination .gemini/skills</code></p>
     </td>
-    <td align="center" width="25%">
-      <img src="https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/brand-logo-6.png" width="48" height="48" alt="Cursor app icon"><br>
-      <strong>Cursor</strong>
+    <td width="50%" valign="top">
+      <p><img src="https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/brand-logo-6.png" width="44" height="44" alt="Cursor app icon"></p>
+      <h3>Cursor</h3>
+      <p><strong>Project · current repository</strong></p>
+      <p>Best when Cursor should discover the Flutter specialists only inside the opened repository.</p>
+      <p><strong>Destination</strong><br><code>.cursor/skills</code></p>
+      <p><strong>From an existing clone</strong><br><code>python3 scripts/install.py --destination .cursor/skills</code></p>
     </td>
   </tr>
 </table>
 
-Prefer a direct installation without the skills CLI? Pick your agent below.
+### Direct install — no skills CLI
 
-<details open>
-<summary><strong>Claude Code</strong> — personal installation</summary>
+Use this route if Node.js is unavailable. It clones through HTTPS into a
+temporary directory and copies the skills to the selected destination.
 
-```bash
-fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination ~/.claude/skills
-```
-
-</details>
-
-<details open>
-<summary><strong>Codex</strong> — personal installation</summary>
+<details>
+<summary><strong>Claude Code</strong> · personal, all projects</summary>
 
 ```bash
-fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination ~/.codex/skills
+fde_install_dir="$(mktemp -d)" && \
+git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && \
+python3 "$fde_install_dir/scripts/install.py" --destination ~/.claude/skills
 ```
 
 </details>
 
 <details>
-<summary><strong>Gemini CLI</strong> — install in the current project</summary>
+<summary><strong>Codex</strong> · personal, all projects</summary>
 
 ```bash
-fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination .gemini/skills
+fde_install_dir="$(mktemp -d)" && \
+git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && \
+python3 "$fde_install_dir/scripts/install.py" --destination ~/.codex/skills
 ```
 
 </details>
 
 <details>
-<summary><strong>Cursor</strong> — install in the current project</summary>
+<summary><strong>Gemini CLI</strong> · current project</summary>
 
 ```bash
-fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination .cursor/skills
+fde_install_dir="$(mktemp -d)" && \
+git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && \
+python3 "$fde_install_dir/scripts/install.py" --destination .gemini/skills
 ```
 
 </details>
 
-Start a new agent session after installation so the new skills are discovered.
-
-### Install from an existing clone
-
-If you already cloned the repository, install all skills with:
+<details>
+<summary><strong>Cursor</strong> · current project</summary>
 
 ```bash
-python3 scripts/install.py --destination ~/.codex/skills
-python3 scripts/install.py --destination ~/.claude/skills
-python3 scripts/install.py --destination .gemini/skills
-python3 scripts/install.py --destination .cursor/skills
+fde_install_dir="$(mktemp -d)" && \
+git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && \
+python3 "$fde_install_dir/scripts/install.py" --destination .cursor/skills
 ```
 
-Install only selected skills:
+</details>
+
+### Customize and maintain
+
+**Install only selected skills** from an existing clone:
 
 ```bash
 python3 scripts/install.py \
@@ -161,11 +187,41 @@ python3 scripts/install.py \
   --skill flutter-visual-qa
 ```
 
-The installer performs local copies only and refuses to overwrite existing
-skills. To update an existing installation intentionally, rerun the relevant
-command with `--force` appended after the destination. Host capabilities
-differ: screenshot capture, UI control, and automatic discovery depend on the
-environment.
+**Update intentionally.** The installer protects existing directories. Review
+your current installation, then add `--force` only when you want to replace it:
+
+```bash
+python3 scripts/install.py --destination ~/.codex/skills --force
+```
+
+**Verify the result.** The selected destination should contain seven
+`flutter-*` directories:
+
+```bash
+find ~/.codex/skills -maxdepth 1 -type d -name 'flutter-*' | sort
+```
+
+### Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| `npx: command not found` | Install Node.js, or use the Python-based direct install above. |
+| Destination already exists | Review the installed files; rerun with `--force` only if replacement is intended. |
+| Agent does not discover the skills | Confirm the destination, then fully start a new agent session. |
+| GitHub SSH permission error | Use the HTTPS commands above; they do not require a GitHub SSH key. |
+
+### First run
+
+Open a new session in your agent, enter your Flutter repository, and try:
+
+```text
+Use $flutter-design to audit this app, design an approved adaptive UX,
+implement it with the project design system, check accessibility, and verify
+the rendered result with screenshots.
+```
+
+Host capabilities differ: screenshot capture, UI control, and automatic skill
+discovery depend on the environment.
 
 ## Use
 
