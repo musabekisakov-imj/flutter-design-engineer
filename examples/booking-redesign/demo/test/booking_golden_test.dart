@@ -31,7 +31,7 @@ void main() {
       find.byType(BookingDemoShell),
       matchesGoldenFile('../goldens/compact-before.png'),
     );
-  });
+  }, tags: ['golden']);
 
   testWidgets('compact after', (tester) async {
     tester.view.physicalSize = const Size(430, 1100);
@@ -43,7 +43,7 @@ void main() {
       find.byType(BookingDemoShell),
       matchesGoldenFile('../goldens/compact-after.png'),
     );
-  });
+  }, tags: ['golden']);
 
   testWidgets('expanded after', (tester) async {
     tester.view.physicalSize = const Size(1280, 900);
@@ -55,5 +55,5 @@ void main() {
       find.byType(BookingDemoShell),
       matchesGoldenFile('../goldens/expanded-after.png'),
     );
-  });
+  }, tags: ['golden']);
 }

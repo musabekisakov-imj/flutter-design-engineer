@@ -119,7 +119,7 @@ Flutter fixture checks:
 ```bash
 cd examples/booking-redesign/demo
 flutter analyze
-flutter test
+flutter test --exclude-tags golden
 ```
 
 Regenerate screenshots intentionally:
@@ -128,7 +128,7 @@ Regenerate screenshots intentionally:
 flutter test --update-goldens
 ```
 
-Inspect every changed golden before accepting it.
+Goldens are rendered and reviewed on macOS; font rasterization differs across operating systems. CI runs platform-independent widget behavior tests and analyzer checks. Inspect every changed golden before accepting it.
 
 ## Design principles
 
@@ -152,4 +152,3 @@ Start with an issue labelled `good first issue` or propose a focused eval. Behav
 ## License
 
 MIT. The bundled Roboto and Material Icons fonts used by the deterministic demo are distributed under their upstream Apache 2.0 terms; see [font notices](examples/booking-redesign/demo/assets/fonts/NOTICE.md).
-
