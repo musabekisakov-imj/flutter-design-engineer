@@ -10,21 +10,33 @@
 
 </div>
 
-Most AI UI workflows jump from a vague brief to widget code. Flutter Design Engineer enforces a more reliable loop:
+## Same model. Same prompt. Different workflow.
+
+Flutter Design Engineer is a model-agnostic skill system for Claude Code, Codex, and compatible coding agents. It changes the workflow around the model: establish product intent, define states and visual direction, implement adaptively, then inspect rendered evidence.
 
 ```text
 inspect → understand → direct → model states → implement → render → critique → refine
 ```
 
-It is a modular skill system for Claude Code, Codex, and compatible skill-aware agents. It does not ship a restrictive widget framework and does not pretend that one visual style fits every product.
+| One-shot generation risk | Skill-guided workflow requirement |
+| --- | --- |
+| Starts writing widgets from a vague brief | Establishes product intent and an explicit direction first |
+| Optimizes for one screenshot size | Requires compact mobile and expanded tablet/desktop composition |
+| Shows only the happy path | Models loading, empty, partial, error, and success states |
+| Treats accessibility as cleanup | Includes semantics, focus, scaling, RTL, and reduced motion |
+| Calls source code “polished” | Requires rendered screenshots, critique, and refinement |
+
+This table describes workflow requirements, not measured model results. The [reproducible benchmark protocol](benchmarks/connected-command-center) is ready; Claude, Codex, and Grok rows remain pending until each has completed a controlled baseline and skill-guided pair.
 
 ## One connected quality bar
 
-The repository includes a real, deterministic Flutter fixture connecting an AI workspace, project pulse, finance summary, and travel plan. The same models and components become a compact feed or an expanded command center through constraint-driven composition.
+The repository includes a real, deterministic Flutter fixture connecting an AI workspace, project pulse, finance summary, and travel plan. It is one Flutter codebase adapting the same models and components across screen sizes—not separate mobile and web implementations.
 
-| Compact command center | Expanded command center |
+| Flutter Mobile | Flutter Tablet / Desktop |
 | --- | --- |
 | ![Compact Connected Command Center](examples/connected-command-center/demo/goldens/compact-command-center.png) | ![Expanded Connected Command Center](examples/connected-command-center/demo/goldens/expanded-command-center.png) |
+
+<p align="center"><strong>One Flutter codebase · adaptive across screen sizes</strong></p>
 
 ![Recoverable connected-source error](examples/connected-command-center/demo/goldens/error-command-center.png)
 
