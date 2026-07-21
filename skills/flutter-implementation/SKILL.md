@@ -12,6 +12,7 @@ Implement the approved experience inside the host project's conventions.
 1. Confirm the visual direction, behavior, state matrix, and acceptance criteria. If absent and choices are material, return to `$flutter-design`.
 2. Inspect neighboring screens, theme, routing, state management, generated code rules, test style, and current worktree changes.
 3. Read only the relevant references: `references/flutter-architecture.md`, `references/adaptive-layouts.md`, `references/navigation-and-input.md`, and `references/states-and-feedback.md`.
+   Read `references/connected-product-workflows.md` when one surface combines multiple domains or data sources.
 
 ## Implement
 

@@ -20,6 +20,7 @@ Design with evidence. Do not jump from a vague request to widget code.
    - Rendered review or golden tests: use `$flutter-visual-qa`.
 4. Before implementation, record one explicit visual direction: type character, density, palette behavior, geometry, imagery, and motion character. Read `references/visual-direction.md` and `references/anti-slop.md`.
 5. Enumerate data and interaction states: initial, loading, empty, populated, partial, error, offline, disabled, destructive confirmation, and success as applicable.
+   For multi-domain dashboards or connected tools, read `references/connected-product-workflows.md` and define the connective model before arranging regions.
 6. Define acceptance criteria for compact and expanded layouts, themes, text scaling, and critical interactions.
 7. Implement only after direction and states are explicit.
 8. Require static checks, rendered evidence, accessibility review, and one refinement pass before completion.

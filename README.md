@@ -6,7 +6,7 @@
 
 [![Validate](https://github.com/musabekisakov-imj/flutter-design-engineer/actions/workflows/validate.yml/badge.svg)](https://github.com/musabekisakov-imj/flutter-design-engineer/actions/workflows/validate.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-102235.svg)](LICENSE)
-[![Flutter](https://img.shields.io/badge/Flutter-tested-54C5F8.svg)](examples/booking-redesign/demo)
+[![Flutter](https://img.shields.io/badge/Flutter-tested-54C5F8.svg)](examples/connected-command-center/demo)
 
 </div>
 
@@ -18,17 +18,24 @@ inspect → understand → direct → model states → implement → render → 
 
 It is a modular skill system for Claude Code, Codex, and compatible skill-aware agents. It does not ship a restrictive widget framework and does not pretend that one visual style fits every product.
 
-## What changes
+## One connected quality bar
 
-The repository includes a real, deterministic Flutter fixture that demonstrates the quality bar encoded by the skills. The “before” screen intentionally reproduces common generic AI patterns; the “after” screen applies explicit hierarchy, semantic tokens, adaptive composition, complete state thinking, and rendered QA.
+The repository includes a real, deterministic Flutter fixture connecting an AI workspace, project pulse, finance summary, and travel plan. The same models and components become a compact feed or an expanded command center through constraint-driven composition.
 
-| Generic starting point | Skill-guided compact direction |
+| Compact command center | Expanded command center |
 | --- | --- |
-| ![Generic booking screen](examples/booking-redesign/demo/goldens/compact-before.png) | ![Refined compact booking screen](examples/booking-redesign/demo/goldens/compact-after.png) |
+| ![Compact Connected Command Center](examples/connected-command-center/demo/goldens/compact-command-center.png) | ![Expanded Connected Command Center](examples/connected-command-center/demo/goldens/expanded-command-center.png) |
 
-![Expanded adaptive booking screen](examples/booking-redesign/demo/goldens/expanded-after.png)
+![Recoverable connected-source error](examples/connected-command-center/demo/goldens/error-command-center.png)
 
-These are committed Flutter golden-test outputs—not design-tool exports. See the [demo source](examples/booking-redesign/demo) and [example rationale](examples/booking-redesign/README.md). The example demonstrates the system's standard; it is not a claim that the result was generated autonomously.
+These are committed Flutter golden-test outputs—not design-tool exports. See the [demo source](examples/connected-command-center/demo) and [example rationale](examples/connected-command-center/README.md). The example demonstrates the system's standard; it is not a claim that the result was generated autonomously.
+
+The fixture demonstrates all seven skills as one auditable workflow:
+
+```text
+audit → product direction → semantic system → adaptive implementation
+      → accessibility + motion → rendered visual QA → refinement
+```
 
 ## Skills
 
@@ -76,7 +83,7 @@ The installer performs local copies only and refuses to overwrite existing skill
 Start broad:
 
 ```text
-Use $flutter-design to redesign this booking flow without changing backend behavior.
+Use $flutter-design to turn this multi-domain dashboard into one coherent adaptive product without changing backend behavior.
 ```
 
 Or invoke a specialist directly:
@@ -117,7 +124,7 @@ python3 -m unittest discover -s tests -v
 Flutter fixture checks:
 
 ```bash
-cd examples/booking-redesign/demo
+cd examples/connected-command-center/demo
 flutter analyze
 flutter test --exclude-tags golden
 ```
@@ -151,4 +158,4 @@ Start with an issue labelled `good first issue` or propose a focused eval. Behav
 
 ## License
 
-MIT. The bundled Roboto and Material Icons fonts used by the deterministic demo are distributed under their upstream Apache 2.0 terms; see [font notices](examples/booking-redesign/demo/assets/fonts/NOTICE.md).
+MIT. The bundled Roboto and Material Icons fonts used by the deterministic demo are distributed under their upstream Apache 2.0 terms; see [font notices](examples/connected-command-center/demo/assets/fonts/NOTICE.md).
