@@ -1,0 +1,31 @@
+name: Bug report
+description: Report reproducible skill, installer, validator, or demo behavior.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Skill behavior, Installer, Validator, Flutter demo, Documentation]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include the prompt, host, relevant project context, and exact steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Raw evidence
+      description: Add output, diff, screenshot, or logs without credentials.
+

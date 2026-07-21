@@ -18,3 +18,17 @@ jobs:
       - run: python3 scripts/validate_repository.py
       - run: python3 -m unittest discover -s tests -v
 
+  flutter-demo:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/booking-redesign/demo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test

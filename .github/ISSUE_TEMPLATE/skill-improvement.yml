@@ -1,0 +1,33 @@
+name: Skill improvement
+description: Propose a focused behavior or reference improvement backed by a use case.
+title: "[Skill]: "
+labels: [enhancement]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      placeholder: flutter-visual-qa
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Real user scenario
+      description: What did the user ask, and where did the current workflow struggle?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: eval
+    attributes:
+      label: Evaluation approach
+      description: Explain how a maintainer can detect success or regression.
+    validations:
+      required: true
+

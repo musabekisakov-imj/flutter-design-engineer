@@ -1,6 +1,27 @@
 # Booking Redesign Example
 
-This example defines a reproducible eval fixture rather than prescribing one visual style.
+This example defines a reproducible eval fixture rather than prescribing one visual style. It now includes a real [Flutter demo](demo) with deterministic compact and expanded golden screenshots.
+
+## Visual direction reference
+
+![Three-screen booking art direction](../../docs/media/booking-art-direction.png)
+
+This image is an AI-generated art-direction reference used to establish palette, density, hierarchy, and flow. The screenshots in `demo/goldens/` are rendered by Flutter and are the implementation evidence.
+
+Run the demo:
+
+```bash
+cd demo
+flutter run -d chrome
+```
+
+Verify and regenerate screenshots:
+
+```bash
+flutter analyze
+flutter test
+flutter test --update-goldens
+```
 
 ## Product
 
@@ -32,4 +53,3 @@ A returning customer books a service, staff member, and available time. The crit
 5. Focused implementation diff.
 6. Analyzer and test output.
 7. Rendered matrix with a visual-QA refinement pass.
-

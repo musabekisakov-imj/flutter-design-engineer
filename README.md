@@ -1,12 +1,34 @@
+<div align="center">
+
 # Flutter Design Engineer
 
-An open-source agent skill system for product-aware, adaptive, accessible, and visually verified Flutter UI work.
+**Agent skills for product-aware, adaptive, accessible, and visually verified Flutter UI.**
 
-Most AI UI workflows jump from a vague brief to widget code. Flutter Design Engineer enforces a better loop:
+[![Validate](https://github.com/musabekisakov-imj/flutter-design-engineer/actions/workflows/validate.yml/badge.svg)](https://github.com/musabekisakov-imj/flutter-design-engineer/actions/workflows/validate.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-102235.svg)](LICENSE)
+[![Flutter](https://img.shields.io/badge/Flutter-tested-54C5F8.svg)](examples/booking-redesign/demo)
+
+</div>
+
+Most AI UI workflows jump from a vague brief to widget code. Flutter Design Engineer enforces a more reliable loop:
 
 ```text
 inspect → understand → direct → model states → implement → render → critique → refine
 ```
+
+It is a modular skill system for Claude Code, Codex, and compatible skill-aware agents. It does not ship a restrictive widget framework and does not pretend that one visual style fits every product.
+
+## What changes
+
+The repository includes a real, deterministic Flutter fixture that demonstrates the quality bar encoded by the skills. The “before” screen intentionally reproduces common generic AI patterns; the “after” screen applies explicit hierarchy, semantic tokens, adaptive composition, complete state thinking, and rendered QA.
+
+| Generic starting point | Skill-guided compact direction |
+| --- | --- |
+| ![Generic booking screen](examples/booking-redesign/demo/goldens/compact-before.png) | ![Refined compact booking screen](examples/booking-redesign/demo/goldens/compact-after.png) |
+
+![Expanded adaptive booking screen](examples/booking-redesign/demo/goldens/expanded-after.png)
+
+These are committed Flutter golden-test outputs—not design-tool exports. See the [demo source](examples/booking-redesign/demo) and [example rationale](examples/booking-redesign/README.md). The example demonstrates the system's standard; it is not a claim that the result was generated autonomously.
 
 ## Skills
 
@@ -20,70 +42,114 @@ inspect → understand → direct → model states → implement → render → 
 | `flutter-accessibility` | Harden semantics, focus, text scaling, RTL, and localization |
 | `flutter-visual-qa` | Verify rendered states, breakpoints, themes, and goldens |
 
+Each skill is self-contained: install one specialist or the full set without broken shared references.
+
 ## Install
 
-Install all skills into a chosen directory:
+Clone and install all skills into your agent's skill directory:
 
 ```bash
+git clone https://github.com/musabekisakov-imj/flutter-design-engineer.git
+cd flutter-design-engineer
 python3 scripts/install.py --destination ~/.codex/skills
+```
+
+For Claude Code:
+
+```bash
+python3 scripts/install.py --destination ~/.claude/skills
 ```
 
 Install selected skills:
 
 ```bash
 python3 scripts/install.py \
-  --destination ~/.claude/skills \
+  --destination ~/.codex/skills \
   --skill flutter-design \
   --skill flutter-visual-qa
 ```
 
-The installer refuses to overwrite existing skills unless `--force` is provided. You can also copy folders from `skills/` manually into the skill directory supported by your agent host. Host capabilities differ: screenshot capture, UI tools, and automatic skill discovery depend on the environment.
+The installer performs local copies only and refuses to overwrite existing skills unless `--force` is supplied. Host capabilities differ: screenshot capture, UI control, and automatic discovery depend on the environment.
 
 ## Use
 
-Start with the router for broad work:
+Start broad:
 
 ```text
-Use $flutter-design to redesign this booking flow without changing its backend behavior.
+Use $flutter-design to redesign this booking flow without changing backend behavior.
 ```
 
-Invoke specialists directly for narrow tasks:
+Or invoke a specialist directly:
 
 ```text
 Use $flutter-audit to review these Flutter screens. Do not edit code.
-Use $flutter-accessibility to test this checkout flow at enlarged text sizes and RTL.
+Use $flutter-accessibility to test checkout at 200% text scale and RTL.
 Use $flutter-visual-qa to compare compact, tablet, light, and dark states.
 ```
 
-## Validate
+## How the system routes work
+
+```mermaid
+flowchart LR
+  A["Flutter request"] --> B["flutter-design"]
+  B --> C["Inspect product and project"]
+  C --> D["Visual direction and state matrix"]
+  D --> E["Design system"]
+  D --> F["Implementation"]
+  F --> G["Accessibility"]
+  F --> H["Motion"]
+  G --> I["Rendered visual QA"]
+  H --> I
+  I --> J["Refinement and evidence"]
+```
+
+Detailed guidance loads only when required. This keeps the entry skill concise while preserving deep specialist workflows.
+
+## Verify
+
+Repository checks:
 
 ```bash
 python3 scripts/validate_repository.py
 python3 -m unittest discover -s tests -v
 ```
 
-Run the official Codex validator against any skill when it is available:
+Flutter fixture checks:
 
 ```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py skills/flutter-design
+cd examples/booking-redesign/demo
+flutter analyze
+flutter test
 ```
 
-## Design Principles
+Regenerate screenshots intentionally:
+
+```bash
+flutter test --update-goldens
+```
+
+Inspect every changed golden before accepting it.
+
+## Design principles
 
 - Product intent precedes aesthetics.
 - Visual direction precedes implementation.
-- Every relevant state is designed.
+- Relevant states are designed explicitly.
 - Constraints drive adaptive composition.
 - Accessibility is part of correctness.
 - Rendered evidence precedes claims of polish.
 - Distinctiveness comes from coherent decisions, not decorative noise.
 - Existing architecture and business behavior are preserved by default.
 
+## Project status
+
+This project is new and actively seeking real-world validation. It does not claim adoption, download, or contributor numbers it has not earned. See the [roadmap](ROADMAP.md), try it on a Flutter project, and share a reproducible issue or improvement.
+
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Behavioral changes should add or update an eval case and keep all validation green.
+Start with an issue labelled `good first issue` or propose a focused eval. Behavioral changes should update an eval case and keep all checks green. See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. The bundled Roboto and Material Icons fonts used by the deterministic demo are distributed under their upstream Apache 2.0 terms; see [font notices](examples/booking-redesign/demo/assets/fonts/NOTICE.md).
 
