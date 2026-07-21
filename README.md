@@ -65,21 +65,94 @@ Each skill is self-contained: install one specialist or the full set without bro
 
 ## Install
 
-Clone and install all skills into your agent's skill directory:
+### Quick Start
+
+The fastest path for Claude Code, Codex, Gemini CLI, Cursor, and other
+skill-aware agents is the open [skills CLI](https://skills.sh/docs/cli):
 
 ```bash
-git clone https://github.com/musabekisakov-imj/flutter-design-engineer.git
-cd flutter-design-engineer
+npx skills add musabekisakov-imj/flutter-design-engineer
+```
+
+Browse the seven skills before installing:
+
+```bash
+npx skills add musabekisakov-imj/flutter-design-engineer --list
+```
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://github.com/anthropics.png?size=64" width="48" height="48" alt="Claude logo"><br>
+      <strong>Claude Code</strong>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://github.com/openai.png?size=64" width="48" height="48" alt="OpenAI logo"><br>
+      <strong>Codex</strong>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://github.com/google-gemini.png?size=64" width="48" height="48" alt="Gemini logo"><br>
+      <strong>Gemini CLI</strong>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://github.com/getcursor.png?size=64" width="48" height="48" alt="Cursor logo"><br>
+      <strong>Cursor</strong>
+    </td>
+  </tr>
+</table>
+
+Prefer a direct installation without the skills CLI? Pick your agent below.
+
+<details open>
+<summary><strong>Claude Code</strong> — personal installation</summary>
+
+```bash
+fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination ~/.claude/skills
+```
+
+</details>
+
+<details open>
+<summary><strong>Codex</strong> — personal installation</summary>
+
+```bash
+fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination ~/.codex/skills
+```
+
+</details>
+
+<details>
+<summary><strong>Gemini CLI</strong> — install in the current project</summary>
+
+```bash
+fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination .gemini/skills
+```
+
+</details>
+
+<details>
+<summary><strong>Cursor</strong> — install in the current project</summary>
+
+```bash
+fde_install_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$fde_install_dir" && python3 "$fde_install_dir/scripts/install.py" --destination .cursor/skills
+```
+
+</details>
+
+Start a new agent session after installation so the new skills are discovered.
+
+### Install from an existing clone
+
+If you already cloned the repository, install all skills with:
+
+```bash
 python3 scripts/install.py --destination ~/.codex/skills
-```
-
-For Claude Code:
-
-```bash
 python3 scripts/install.py --destination ~/.claude/skills
+python3 scripts/install.py --destination .gemini/skills
+python3 scripts/install.py --destination .cursor/skills
 ```
 
-Install selected skills:
+Install only selected skills:
 
 ```bash
 python3 scripts/install.py \
@@ -88,7 +161,11 @@ python3 scripts/install.py \
   --skill flutter-visual-qa
 ```
 
-The installer performs local copies only and refuses to overwrite existing skills unless `--force` is supplied. Host capabilities differ: screenshot capture, UI control, and automatic discovery depend on the environment.
+The installer performs local copies only and refuses to overwrite existing
+skills. To update an existing installation intentionally, rerun the relevant
+command with `--force` appended after the destination. Host capabilities
+differ: screenshot capture, UI control, and automatic discovery depend on the
+environment.
 
 ## Use
 
