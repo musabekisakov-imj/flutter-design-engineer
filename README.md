@@ -83,19 +83,19 @@ npx skills add musabekisakov-imj/flutter-design-engineer --list
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="https://github.com/anthropics.png?size=64" width="48" height="48" alt="Claude logo"><br>
+      <img src="assets/agents/claude.png" width="48" height="48" alt="Claude logo"><br>
       <strong>Claude Code</strong>
     </td>
     <td align="center" width="25%">
-      <img src="https://github.com/openai.png?size=64" width="48" height="48" alt="OpenAI logo"><br>
+      <img src="assets/agents/codex.png" width="48" height="48" alt="Codex app icon"><br>
       <strong>Codex</strong>
     </td>
     <td align="center" width="25%">
-      <img src="https://github.com/google-gemini.png?size=64" width="48" height="48" alt="Gemini logo"><br>
+      <img src="assets/agents/gemini.png" width="48" height="48" alt="Gemini app icon"><br>
       <strong>Gemini CLI</strong>
     </td>
     <td align="center" width="25%">
-      <img src="https://github.com/getcursor.png?size=64" width="48" height="48" alt="Cursor logo"><br>
+      <img src="https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/brand-logo-6.png" width="48" height="48" alt="Cursor app icon"><br>
       <strong>Cursor</strong>
     </td>
   </tr>
