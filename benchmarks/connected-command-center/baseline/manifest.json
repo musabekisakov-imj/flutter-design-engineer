@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "arm": "baseline",
+  "status": "pending",
+  "model": null,
+  "model_version": null,
+  "run_date": null,
+  "starter_commit": null,
+  "host": null,
+  "budget": null,
+  "retry_policy": null,
+  "human_interventions": [],
+  "artifacts": []
+}

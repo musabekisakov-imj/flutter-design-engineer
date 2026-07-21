@@ -3,12 +3,24 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from scripts.install import install
-from scripts.validate_repository import ROOT, validate
+from scripts.validate_repository import ROOT, validate, validate_benchmark_manifest
 
 
 class RepositoryValidationTest(unittest.TestCase):
     def test_repository_is_valid(self) -> None:
         self.assertEqual(validate(ROOT), [])
+
+    def test_complete_benchmark_requires_evidence(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            manifest = root / "manifest.json"
+            manifest.write_text(
+                '{"arm":"baseline","status":"complete","artifacts":[]}',
+                encoding="utf-8",
+            )
+            errors = validate_benchmark_manifest(manifest, root)
+            self.assertTrue(any("missing model" in error for error in errors))
+            self.assertTrue(any("requires evidence" in error for error in errors))
 
 
 class InstallerTest(unittest.TestCase):
