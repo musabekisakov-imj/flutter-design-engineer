@@ -80,6 +80,37 @@ h1 { max-width: 700px; margin: 0; font-size: clamp(3rem, 6.8vw, 5.9rem); line-he
 .requirements span::before { content: "✓"; margin-right: 6px; color: var(--success); }
 .secondary-action { color: var(--muted-strong); font-size: .78rem; font-weight: 700; }
 
+.rendered-showcase { padding-block: 108px; border-block: 1px solid var(--line); background: #081522; }
+.showcase-heading { display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 72px; margin-bottom: 46px; }
+.showcase-heading h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }
+.showcase-intro { max-width: 450px; justify-self: end; }
+.showcase-intro > p:first-child { margin: 0 0 18px; color: var(--muted-strong); }
+.verified-status { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--success); font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.verified-status span { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid rgb(105 219 172 / 45%); border-radius: 50%; background: rgb(105 219 172 / 8%); }
+.device-wall { position: relative; min-height: 720px; border: 1px solid var(--line); border-radius: var(--radius); background: radial-gradient(circle at 78% 18%, rgb(255 115 87 / 9%), transparent 30%), linear-gradient(145deg, #0c1d2e, #07111d); overflow: hidden; box-shadow: var(--shadow); }
+.device-wall::before { content: "ADAPTIVE FLUTTER FIXTURE"; position: absolute; top: 26px; right: 30px; color: var(--muted); font: 750 .62rem monospace; letter-spacing: .14em; }
+.device-frame { position: absolute; display: block; padding: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); box-shadow: 0 30px 70px rgb(0 0 0 / 42%); text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+.device-frame:hover { border-color: var(--accent); transform: translateY(-4px); }
+.device-frame img { display: block; width: 100%; height: auto; }
+.device-label { display: block; padding: 2px 3px 10px; color: var(--muted-strong); font: 750 .62rem monospace; letter-spacing: .1em; text-transform: uppercase; }
+.device-expanded { z-index: 1; top: 76px; right: 34px; width: 76%; border-radius: 14px; }
+.device-expanded img { border-radius: 7px; }
+.device-mobile { z-index: 2; bottom: 34px; left: 34px; width: min(29%, 310px); border-radius: 23px; transform: rotate(-1.4deg); }
+.device-mobile:hover { transform: rotate(-.5deg) translateY(-4px); }
+.device-mobile img { border-radius: 14px; }
+.wall-caption { position: absolute; z-index: 3; right: 38px; bottom: 35px; width: min(58%, 650px); display: grid; gap: 3px; padding: 15px 18px; border: 1px solid var(--line); border-radius: 9px; background: rgb(6 16 26 / 92%); }
+.wall-caption strong { font-size: .82rem; }
+.wall-caption span { color: var(--muted); font-size: .73rem; }
+.error-evidence { display: grid; grid-template-columns: .75fr 1.25fr; gap: 58px; align-items: center; margin-top: 18px; padding: clamp(28px, 5vw, 52px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.error-copy h3 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.03; letter-spacing: -.04em; }
+.error-copy > p:not(.eyebrow) { color: var(--muted); }
+.evidence-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; }
+.evidence-links a { color: var(--muted-strong); font-size: .76rem; font-weight: 750; }
+.error-frame { display: block; padding: 9px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface-2); transition: border-color .2s ease, transform .2s ease; }
+.error-frame:hover { border-color: var(--accent); transform: translateY(-3px); }
+.error-frame img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.evidence-disclosure { margin: 16px 0 0; color: var(--muted); font-size: .7rem; text-align: center; letter-spacing: .02em; }
+
 .command-center, #skills, .support, .first-run { padding-block: 100px; }
 .section-heading { max-width: 680px; margin-bottom: 38px; }
 .section-heading h2, .first-run h2 { margin: 0; font-size: clamp(2.1rem, 4vw, 3.7rem); line-height: 1.04; letter-spacing: -.045em; }
@@ -153,6 +184,13 @@ h1 { max-width: 700px; margin: 0; font-size: clamp(3rem, 6.8vw, 5.9rem); line-he
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-block: 76px; }
   .site-header nav > a:not(.github-link) { display: none; }
+  .showcase-heading { grid-template-columns: 1fr; gap: 22px; }
+  .showcase-intro { justify-self: start; }
+  .device-wall { min-height: 610px; }
+  .device-expanded { width: 82%; right: 22px; }
+  .device-mobile { width: 31%; left: 22px; bottom: 26px; }
+  .wall-caption { right: 22px; bottom: 26px; width: 59%; }
+  .error-evidence { grid-template-columns: 1fr; gap: 34px; }
   .agent-tabs { grid-template-columns: repeat(2, 1fr); }
   .agent-tab:nth-child(2) { border-right: 0; }
   .agent-tab:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -174,6 +212,16 @@ h1 { max-width: 700px; margin: 0; font-size: clamp(3rem, 6.8vw, 5.9rem); line-he
   .site-header .github-link span { font-size: .9rem; }
   h1 { font-size: clamp(2.7rem, 15vw, 4.2rem); }
   .hero { padding-block: 58px 72px; gap: 44px; }
+  .rendered-showcase { padding-block: 76px; }
+  .showcase-heading { margin-bottom: 30px; }
+  .device-wall { min-height: 0; display: grid; gap: 14px; padding: 44px 13px 13px; overflow: visible; }
+  .device-wall::before { top: 16px; right: auto; left: 16px; }
+  .device-frame { position: relative; inset: auto; width: 100%; transform: none; box-shadow: 0 18px 45px rgb(0 0 0 / 28%); }
+  .device-frame:hover, .device-mobile:hover { transform: none; }
+  .device-mobile { grid-row: 1; width: min(76%, 310px); justify-self: center; }
+  .device-expanded { grid-row: 2; }
+  .wall-caption { position: relative; inset: auto; grid-row: 3; width: 100%; }
+  .error-evidence { padding: 22px; }
   .metrics { flex-wrap: wrap; gap: 22px; }
   .install-module { padding: 20px; }
   .module-header { display: grid; }
