@@ -1,38 +1,64 @@
 document.documentElement.classList.add("js");
 
-const tabs = [...document.querySelectorAll('[role="tab"]')];
-const panels = [...document.querySelectorAll('[role="tabpanel"]')];
 const copyStatus = document.querySelector("#copy-status");
+const menuButton = document.querySelector(".menu-button");
+const primaryNav = document.querySelector("#primary-nav");
 
-function activateTab(nextTab, moveFocus = false) {
-  tabs.forEach((tab) => {
-    const selected = tab === nextTab;
-    tab.setAttribute("aria-selected", String(selected));
-    tab.tabIndex = selected ? 0 : -1;
+function setupTablist(tablist) {
+  const tabs = [...tablist.querySelectorAll(':scope > [role="tab"]')];
+  const panels = tabs
+    .map((tab) => document.getElementById(tab.getAttribute("aria-controls")))
+    .filter(Boolean);
+
+  function activate(nextTab, moveFocus = false) {
+    tabs.forEach((tab) => {
+      const selected = tab === nextTab;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    panels.forEach((panel) => {
+      panel.hidden = panel.id !== nextTab.getAttribute("aria-controls");
+    });
+    if (moveFocus) nextTab.focus();
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activate(tab));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (nextIndex === undefined) return;
+      event.preventDefault();
+      activate(tabs[nextIndex], true);
+    });
   });
 
-  panels.forEach((panel) => {
-    panel.hidden = panel.id !== nextTab.getAttribute("aria-controls");
-  });
-
-  if (moveFocus) nextTab.focus();
+  const selected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0];
+  if (selected) activate(selected);
 }
 
-tabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => activateTab(tab));
-  tab.addEventListener("keydown", (event) => {
-    let nextIndex;
-    if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-    if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-    if (event.key === "Home") nextIndex = 0;
-    if (event.key === "End") nextIndex = tabs.length - 1;
-    if (nextIndex === undefined) return;
-    event.preventDefault();
-    activateTab(tabs[nextIndex], true);
-  });
-});
+document.querySelectorAll('[role="tablist"]').forEach(setupTablist);
 
-if (tabs.length) activateTab(tabs[0]);
+if (menuButton && primaryNav) {
+  function closeMenu() {
+    menuButton.setAttribute("aria-expanded", "false");
+    primaryNav.classList.remove("is-open");
+  }
+
+  menuButton.addEventListener("click", () => {
+    const expanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!expanded));
+    primaryNav.classList.toggle("is-open", !expanded);
+  });
+
+  primaryNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+}
 
 async function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -65,10 +91,10 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
       await copyText(target.textContent.trim());
       button.textContent = "Copied";
       button.classList.add("is-copied");
-      copyStatus.textContent = "Copied to clipboard.";
+      if (copyStatus) copyStatus.textContent = "Copied to clipboard.";
     } catch {
       button.textContent = "Select text";
-      copyStatus.textContent = "Clipboard access failed. Select the command text and copy it manually.";
+      if (copyStatus) copyStatus.textContent = "Clipboard access failed. Select the command and copy it manually.";
     }
 
     window.setTimeout(() => {
@@ -77,3 +103,17 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
     }, 2000);
   });
 });
+
+const revealItems = [...document.querySelectorAll(".reveal")];
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.16 });
+  revealItems.forEach((item) => observer.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}

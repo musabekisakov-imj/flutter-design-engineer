@@ -49,9 +49,9 @@ audit → product direction → semantic system → adaptive implementation
       → accessibility + motion → rendered visual QA → refinement
 ```
 
-## A complete customer journey
+## A verified mobile flow
 
-The second fixture follows one premium barbershop booking from service selection through confirmation. It adds forms, validation, unavailable slots, recovery, safe revision, 200% text scaling, and a real tablet recomposition.
+The second fixture exercises the workflow against a complete booking journey. Its purpose is technical verification: forms, validation, unavailable slots, recovery, safe revision, 200% text scaling, and a real tablet recomposition.
 
 | Service | Barber | Date and time |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ The second fixture follows one premium barbershop booking from service selection
 | --- | --- | --- |
 | ![Booking review](examples/barbershop-booking/demo/goldens/phone-review.png) | ![Booking confirmation](examples/barbershop-booking/demo/goldens/phone-confirmation.png) | ![Recoverable availability error](examples/barbershop-booking/demo/goldens/phone-availability-error.png) |
 
-The [case-study source and verification notes](examples/barbershop-booking/README.md) distinguish authored prototype work from Flutter evidence. The separate [HTML design companion](docs/prototypes/editorial-barbershop-booking/) was used for direction review only; the screenshots above were rendered by Flutter golden tests.
+The [fixture source and verification notes](examples/barbershop-booking/README.md) distinguish authored prototype work from Flutter evidence. The separate [HTML design companion](docs/prototypes/editorial-barbershop-booking/) was used for direction review only; the screenshots above were rendered by Flutter golden tests.
 
 ## Skills
 
@@ -135,7 +135,7 @@ npx skills add musabekisakov-imj/flutter-design-engineer --list
       <p><strong>From an existing clone</strong><br><code>python3 scripts/install.py --destination .gemini/skills</code></p>
     </td>
     <td width="50%" valign="top">
-      <p><img src="https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/brand-logo-6.png" width="44" height="44" alt="Cursor app icon"></p>
+      <p><img src="docs/assets/agents/cursor.png" width="44" height="44" alt="Cursor app icon"></p>
       <h3>Cursor</h3>
       <p><strong>Project · current repository</strong></p>
       <p>Best when Cursor should discover the Flutter specialists only inside the opened repository.</p>
