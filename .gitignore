@@ -4,4 +4,4 @@ __pycache__/
 .dart_tool/
 build/
 coverage/
-
+.superpowers/
