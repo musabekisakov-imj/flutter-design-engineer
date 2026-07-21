@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>North &amp; Row Booking Flow - Design Companion</title>
+    <meta
+      name="description"
+      content="A review companion for the Editorial Craft Flutter booking case study."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="review-header">
+      <a class="brand" href="#top" aria-label="North and Row design companion home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>North &amp; Row</span>
+      </a>
+      <nav class="review-nav" aria-label="Prototype sections">
+        <a href="#flow">Flow</a>
+        <a href="#states">States</a>
+        <a href="#tablet">Tablet</a>
+      </nav>
+      <span class="prototype-label">Design companion</span>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <div>
+          <p class="kicker">Flutter booking case study</p>
+          <h1 id="intro-title">One clear path from service to seat.</h1>
+        </div>
+        <div class="intro-copy">
+          <p>
+            This page reviews the approved product direction before Flutter implementation.
+            It is not implementation evidence.
+          </p>
+          <dl class="design-read">
+            <div><dt>Direction</dt><dd>Editorial Craft</dd></div>
+            <div><dt>Primary task</dt><dd>Reserve in under two minutes</dd></div>
+            <div><dt>Evidence later</dt><dd>Flutter golden tests</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="flow-section" id="flow" aria-labelledby="flow-title">
+        <div class="section-heading">
+          <h2 id="flow-title">The complete journey</h2>
+          <p>Five connected screens keep the current choice visible and make revision safe.</p>
+        </div>
+
+        <div class="screen-switcher" role="tablist" aria-label="Booking screens">
+          <button role="tab" aria-selected="true" data-screen="service">Service</button>
+          <button role="tab" aria-selected="false" data-screen="barber">Barber</button>
+          <button role="tab" aria-selected="false" data-screen="time">Date &amp; time</button>
+          <button role="tab" aria-selected="false" data-screen="review">Review</button>
+          <button role="tab" aria-selected="false" data-screen="success">Confirmed</button>
+        </div>
+
+        <div class="screen-stage">
+          <div class="screen-notes" aria-live="polite">
+            <span class="note-index" id="note-index">01</span>
+            <h3 id="note-title">Start with the decision that changes everything else.</h3>
+            <p id="note-copy">Duration and price stay adjacent to each service. Continue is unavailable until the choice is explicit.</p>
+            <ul id="note-list">
+              <li>Selection uses icon, border, and tone</li>
+              <li>Touch targets remain at least 48 px</li>
+              <li>Summary begins immediately</li>
+            </ul>
+          </div>
+
+          <div class="phone-frame" aria-label="Interactive mobile booking prototype">
+            <div class="phone-status" aria-hidden="true"><span>9:41</span><span>● ●</span></div>
+            <div class="phone-appbar">
+              <button class="icon-button" aria-label="Go back">‹</button>
+              <span class="wordmark">NORTH &amp; ROW</span>
+              <button class="icon-button" aria-label="Close booking">×</button>
+            </div>
+            <div class="progress" aria-label="Booking progress, step 1 of 5">
+              <span class="progress-fill" style="--progress: 20%"></span>
+            </div>
+
+            <div class="phone-content" id="phone-content"></div>
+            <div class="phone-action" id="phone-action"></div>
+          </div>
+
+          <aside class="summary-slab" aria-label="Current booking summary">
+            <p>Your booking</p>
+            <dl id="live-summary">
+              <div><dt>Service</dt><dd>Signature cut</dd></div>
+              <div><dt>Barber</dt><dd>Not selected</dd></div>
+              <div><dt>When</dt><dd>Not selected</dd></div>
+              <div class="summary-total"><dt>Total</dt><dd>€42</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="states-section" id="states" aria-labelledby="states-title">
+        <div class="section-heading narrow">
+          <h2 id="states-title">Failure stays inside the decision.</h2>
+          <p>The chosen service and barber remain safe while availability is retried.</p>
+        </div>
+        <div class="state-comparison">
+          <article class="state-card error-card">
+            <div class="state-copy">
+              <span class="state-symbol" aria-hidden="true">!</span>
+              <h3>Times could not be loaded</h3>
+              <p>Your service and barber are still selected. Try availability again.</p>
+              <button class="secondary-button">Try again</button>
+            </div>
+            <div class="preserved-choice">
+              <span>Still selected</span>
+              <strong>Signature cut with Idris</strong>
+              <small>45 min, €42</small>
+            </div>
+          </article>
+          <article class="state-card empty-card">
+            <div class="date-stamp"><strong>24</strong><span>THU</span></div>
+            <div>
+              <h3>No times on Thursday</h3>
+              <p>Friday has six openings. Your earlier choices will be kept.</p>
+              <button class="text-button">See Friday times <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="tablet-section" id="tablet" aria-labelledby="tablet-title">
+        <div class="tablet-copy">
+          <p class="kicker">Expanded composition</p>
+          <h2 id="tablet-title">More room changes the layout, not the task.</h2>
+          <p>The active decision and a sticky summary sit side by side. Nothing becomes a stretched phone column.</p>
+          <ul>
+            <li>Same models and controller</li>
+            <li>Persistent context without duplicate navigation</li>
+            <li>Bounded reading width for every step</li>
+          </ul>
+        </div>
+        <div class="tablet-frame" aria-label="Tablet availability layout preview">
+          <div class="tablet-bar"><span class="brand-mark small">N</span><span>Book a visit</span><button>Save &amp; exit</button></div>
+          <div class="tablet-layout">
+            <div class="tablet-main">
+              <span class="step-count">3 of 5</span>
+              <h3>Choose a time</h3>
+              <p>Wednesday, 23 July</p>
+              <div class="tablet-dates">
+                <button><span>MON</span><strong>21</strong></button>
+                <button><span>TUE</span><strong>22</strong></button>
+                <button class="selected"><span>WED</span><strong>23</strong></button>
+                <button><span>THU</span><strong>24</strong></button>
+                <button><span>FRI</span><strong>25</strong></button>
+              </div>
+              <h4>Afternoon</h4>
+              <div class="tablet-times">
+                <button>13:15</button><button class="selected">14:30</button><button>15:15</button><button disabled>16:00</button>
+              </div>
+            </div>
+            <div class="tablet-summary">
+              <span>Booking summary</span>
+              <h4>Signature cut</h4>
+              <p>Idris Cole</p>
+              <dl><div><dt>Wednesday</dt><dd>14:30</dd></div><div><dt>Duration</dt><dd>45 min</dd></div><div><dt>Total</dt><dd>€42</dd></div></dl>
+              <button class="primary-button">Continue to details</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Design review artifact for <strong>flutter-design-engineer</strong>.</p>
+      <p>Final evidence will be rendered by Flutter.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
