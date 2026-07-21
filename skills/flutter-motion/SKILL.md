@@ -12,6 +12,7 @@ Use motion to explain change, causality, continuity, hierarchy, or feedback. Rem
 1. Name the event, property change, user value, trigger, interruption behavior, and completion state.
 2. Select the least complex Flutter mechanism that satisfies it: implicit animation, `AnimatedSwitcher`, explicit controller, hero transition, custom painter, or physics simulation.
 3. Define duration ranges, curve character, sequencing, gesture relationship, and reduced-motion equivalent. Read `references/motion.md`.
+   For multi-domain state changes, read `references/connected-product-workflows.md` and animate only the region whose state changed.
 4. Check how the motion behaves during rapid taps, navigation interruption, rebuilds, route disposal, low frame budgets, and changed accessibility settings.
 
 ## Implement

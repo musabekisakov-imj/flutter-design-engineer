@@ -20,6 +20,7 @@ Diagnose before prescribing. Keep audit work read-only unless the user requests 
    - semantics, focus, text scaling, contrast, touch targets, RTL, and reduced motion;
    - widget boundaries, hard-coded dimensions, rebuild scope, and theme consistency.
 4. Read `references/anti-slop.md`, `references/layout-and-density.md`, and `references/visual-qa.md` for applicable checks.
+   For multi-domain surfaces, also read `references/connected-product-workflows.md` and verify that the connection is more than adjacent cards.
 
 ## Prioritize
 

@@ -15,6 +15,7 @@ Build a semantic system that serves the product; do not impose a generic compone
    - surfaces, content, borders, accents, status, and interaction states;
    - display, title, body, label, and numeric typography roles;
    - spacing, radius, elevation, icon size, control height, and motion roles.
+   For products spanning multiple domains, read `references/connected-product-workflows.md`; give domains semantic accents without fragmenting the shared system.
 4. Map roles into `ColorScheme`, `TextTheme`, component themes, and narrowly scoped `ThemeExtension`s.
 5. Support light/dark contrast and platform behavior without duplicating raw values throughout widgets.
 6. Define component contracts for behavior and states, not only appearance.

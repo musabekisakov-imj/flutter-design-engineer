@@ -1,13 +1,14 @@
-import 'package:demo/booking_screen.dart';
+import 'package:demo/command_center_models.dart';
+import 'package:demo/command_center_screen.dart';
 import 'package:demo/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-Widget fixture(DemoMode mode) => MaterialApp(
+Widget fixture(ShowcaseState state) => MaterialApp(
   debugShowCheckedModeBanner: false,
   theme: buildDemoTheme(),
-  home: BookingDemoShell(initialMode: mode),
+  home: CommandCenterShell(initialState: state, showStateControls: false),
 );
 
 void main() {
@@ -21,39 +22,39 @@ void main() {
     await Future.wait([textLoader.load(), iconLoader.load()]);
   });
 
-  testWidgets('compact before', (tester) async {
-    tester.view.physicalSize = const Size(430, 932);
+  testWidgets('compact populated', (tester) async {
+    tester.view.physicalSize = const Size(430, 1180);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(fixture(DemoMode.before));
+    await tester.pumpWidget(fixture(ShowcaseState.populated));
     await tester.pumpAndSettle();
     await expectLater(
-      find.byType(BookingDemoShell),
-      matchesGoldenFile('../goldens/compact-before.png'),
+      find.byType(CommandCenterShell),
+      matchesGoldenFile('../goldens/compact-command-center.png'),
     );
   }, tags: ['golden']);
 
-  testWidgets('compact after', (tester) async {
-    tester.view.physicalSize = const Size(430, 1100);
+  testWidgets('expanded populated', (tester) async {
+    tester.view.physicalSize = const Size(1440, 960);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(fixture(DemoMode.after));
+    await tester.pumpWidget(fixture(ShowcaseState.populated));
     await tester.pumpAndSettle();
     await expectLater(
-      find.byType(BookingDemoShell),
-      matchesGoldenFile('../goldens/compact-after.png'),
+      find.byType(CommandCenterShell),
+      matchesGoldenFile('../goldens/expanded-command-center.png'),
     );
   }, tags: ['golden']);
 
-  testWidgets('expanded after', (tester) async {
-    tester.view.physicalSize = const Size(1280, 900);
+  testWidgets('expanded error', (tester) async {
+    tester.view.physicalSize = const Size(1440, 960);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(fixture(DemoMode.after));
+    await tester.pumpWidget(fixture(ShowcaseState.error));
     await tester.pumpAndSettle();
     await expectLater(
-      find.byType(BookingDemoShell),
-      matchesGoldenFile('../goldens/expanded-after.png'),
+      find.byType(CommandCenterShell),
+      matchesGoldenFile('../goldens/error-command-center.png'),
     );
   }, tags: ['golden']);
 }

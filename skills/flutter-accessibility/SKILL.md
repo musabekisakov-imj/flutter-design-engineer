@@ -16,6 +16,7 @@ Treat accessibility failures that block core tasks as release blockers.
 5. Verify contrast, non-color cues, touch targets, error association, disabled-state clarity, and motion preferences.
 6. Test long translations, pluralization, bidirectional content, mirrored navigation, and directional icon correctness.
 7. Read `references/accessibility-and-localization.md` and relevant platform guidance already present in the project.
+   For multi-domain dashboards, read `references/connected-product-workflows.md` and align semantic order with cross-domain visual priority.
 
 ## Implement
 

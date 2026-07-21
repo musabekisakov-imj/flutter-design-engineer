@@ -6,10 +6,11 @@
 - Structural validator and safe installer.
 - Behavioral eval cases and shared rubric.
 - Compile-verified starter assets.
-- Real Flutter booking fixture with committed golden screenshots.
+- Real Flutter connected-command-center fixture with committed golden screenshots.
 
 ## v0.2 — Platform depth
 
+- Connected-product workflow guidance and multi-domain adaptive fixture.
 - Cupertino-specific visual and interaction guidance.
 - RTL and long-localization fixture coverage.
 - Foldable and desktop composition references.
@@ -31,4 +32,3 @@
 - Maintainer and contributor governance informed by actual usage.
 
 Items are intentionally scoped so contributors can ship independently. See open GitHub issues for ownership and acceptance criteria.
-

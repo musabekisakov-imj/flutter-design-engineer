@@ -18,6 +18,7 @@ Select the smallest representative matrix covering:
 - LTR and RTL for localized products.
 
 Record the exact viewport, device-pixel ratio, theme, locale, and fixture state. Read `references/visual-qa.md`.
+For connected or multi-domain products, also read `references/connected-product-workflows.md` and include partial-source failure in the matrix.
 
 ## Inspect
 

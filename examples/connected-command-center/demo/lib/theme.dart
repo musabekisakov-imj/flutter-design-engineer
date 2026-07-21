@@ -6,6 +6,9 @@ const canvas = Color(0xFFF8F4EC);
 const surface = Color(0xFFFFFCF7);
 const outline = Color(0xFFDDD5C8);
 const muted = Color(0xFF6D6A64);
+const amber = Color(0xFFF2C85B);
+const blue = Color(0xFF5D78EE);
+const green = Color(0xFF8BC7A1);
 
 ThemeData buildDemoTheme() {
   final scheme = ColorScheme.fromSeed(
@@ -17,11 +20,11 @@ ThemeData buildDemoTheme() {
   return ThemeData(
     useMaterial3: true,
     colorScheme: scheme,
-    scaffoldBackgroundColor: canvas,
+    scaffoldBackgroundColor: ink,
     fontFamily: 'DemoRoboto',
     textTheme: const TextTheme(
       displaySmall: TextStyle(
-        fontSize: 36,
+        fontSize: 38,
         height: 1.04,
         fontWeight: FontWeight.w800,
         color: ink,
@@ -46,6 +49,10 @@ ThemeData buildDemoTheme() {
         minimumSize: const Size.fromHeight(52),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: coral,
+      linearTrackColor: outline,
     ),
   );
 }
