@@ -1,6 +1,7 @@
 # Agent Guidance
 
 - Treat `docs/specs/2026-07-21-flutter-design-engineer-design.md` as the product contract and `docs/specs/2026-07-21-connected-command-center-design.md` as the current showcase contract.
+- Treat `docs/specs/2026-07-21-editorial-barbershop-booking-design.md` as the complete mobile-journey showcase contract.
 - Treat `docs/specs/2026-07-21-reproducible-workflow-benchmark-design.md` as the benchmark evidence contract.
 - Keep every skill's frontmatter limited to `name` and `description`.
 - Keep specialist triggers distinct and route detailed knowledge to top-level `references/`.
