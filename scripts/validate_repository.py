@@ -106,6 +106,11 @@ def validate_site_contract(root: Path) -> list[str]:
             errors.append(f"docs/index.html: missing audience outcome {audience_outcome}")
     if "analytics-adapter.js" not in html:
         errors.append("docs/index.html: missing analytics adapter")
+    preview_path = root / "docs" / "assets" / "social-preview.jpg"
+    if "assets/social-preview.jpg" not in html or not preview_path.exists():
+        errors.append("docs: missing social preview image or Open Graph reference")
+    elif preview_path.stat().st_size > 1_000_000:
+        errors.append("docs/assets/social-preview.jpg: GitHub social preview must stay below 1 MB")
     if not analytics_path.exists():
         errors.append("docs/assets/analytics-adapter.js: missing analytics adapter")
     else:
