@@ -37,13 +37,9 @@ void main() {
 
   setUpAll(() async {
     final regular = FontLoader('Roboto')
-      ..addFont(
-        rootBundle.load('assets/fonts/Roboto-Regular.ttf'),
-      );
+      ..addFont(rootBundle.load('assets/fonts/Roboto-Regular.ttf'));
     final bold = FontLoader('Roboto')
-      ..addFont(
-        rootBundle.load('assets/fonts/Roboto-Bold.ttf'),
-      );
+      ..addFont(rootBundle.load('assets/fonts/Roboto-Bold.ttf'));
     await Future.wait([regular.load(), bold.load()]);
   });
 

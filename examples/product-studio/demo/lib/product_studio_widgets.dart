@@ -57,22 +57,60 @@ class StudioMark extends StatelessWidget {
       child: Container(
         width: 40,
         height: 40,
-        decoration: BoxDecoration(
-          color: studioInk,
-          borderRadius: BorderRadius.circular(13),
-        ),
-        alignment: Alignment.center,
-        child: const Text(
-          'F',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(11)),
+        clipBehavior: Clip.antiAlias,
+        child: const CustomPaint(painter: StudioMarkPainter()),
       ),
     ),
   );
+}
+
+class StudioMarkPainter extends CustomPainter {
+  const StudioMarkPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scaleX = size.width / 64;
+    final scaleY = size.height / 64;
+    canvas.save();
+    canvas.scale(scaleX, scaleY);
+
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        const Rect.fromLTWH(2, 2, 60, 60),
+        const Radius.circular(16),
+      ),
+      Paint()..color = studioInk,
+    );
+
+    final upperPlane = Path()
+      ..moveTo(16, 18)
+      ..lineTo(43, 18)
+      ..lineTo(36, 26)
+      ..lineTo(16, 26)
+      ..close();
+    canvas.drawPath(upperPlane, Paint()..color = studioBlue);
+
+    final lowerPlane = Path()
+      ..moveTo(16, 31)
+      ..lineTo(32, 31)
+      ..lineTo(45, 44)
+      ..lineTo(29, 44)
+      ..close();
+    canvas.drawPath(lowerPlane, Paint()..color = const Color(0xFF54C5F8));
+
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        const Rect.fromLTWH(43, 28, 7, 7),
+        const Radius.circular(1.5),
+      ),
+      Paint()..color = studioLime,
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant StudioMarkPainter oldDelegate) => false;
 }
 
 class StudioPill extends StatelessWidget {

@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/assets/brand/mark.svg" width="84" height="84" alt="Flutter Design Engineer logo">
+
 # Flutter Design Engineer
 
 **Agent skills for product-aware, adaptive, accessible, and visually verified Flutter UI.**
