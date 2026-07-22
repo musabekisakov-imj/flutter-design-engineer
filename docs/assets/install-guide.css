@@ -56,17 +56,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav-links a:hover { background: rgb(255 255 255 / 2.8%); }
 .nav-links a[aria-current="location"] { color: var(--text); background: rgb(255 255 255 / 3.5%); }
 .nav-links a[aria-current="location"]::after { opacity: 1; transform: scaleX(1); }
-.nav-github, .nav-install { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 11px; }
+.nav-github, .nav-sponsor, .nav-install { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 11px; }
 .nav-action-icon { display: block; width: 18px; height: 18px; flex: 0 0 auto; }
 .nav-github { background: rgb(9 21 30 / 72%); box-shadow: inset 0 1px rgb(255 255 255 / 5%); }
 .nav-github-mark { transform: translateY(-.5px); }
 .nav-external-icon { width: 13px; height: 13px; margin-left: -2px; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: color .2s var(--ease), transform .2s var(--ease); }
 .site-header nav .nav-github:hover { border-color: var(--muted-strong); background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
 .site-header nav .nav-github:hover .nav-external-icon { color: var(--accent-light); transform: translate(1px, -1px); }
+.nav-sponsor { border-color: rgb(216 255 95 / 62%); background: rgb(216 255 95 / 7%); color: var(--accent-light) !important; box-shadow: inset 0 1px rgb(255 255 255 / 5%); font-weight: 800 !important; }
+.nav-sponsor-icon { fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.site-header nav .nav-sponsor:hover { border-color: var(--accent); background: rgb(216 255 95 / 14%); color: var(--accent-light); box-shadow: 0 10px 26px rgb(139 172 37 / 12%), inset 0 1px rgb(255 255 255 / 8%); transform: translateY(-1px); }
 .site-header nav .nav-install { min-width: 104px; justify-content: center; border-color: var(--accent); background: linear-gradient(180deg, #e0ff72, #cefa42); color: var(--canvas); font-weight: 800; box-shadow: 0 12px 28px rgb(168 210 44 / 19%), inset 0 1px rgb(255 255 255 / 55%); }
 .nav-install-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transform: translateY(-.5px); }
 .site-header nav .nav-install:hover { border-color: var(--accent-light); background: var(--accent-light); color: var(--canvas); box-shadow: 0 12px 30px rgb(139 172 37 / 21%), inset 0 1px rgb(255 255 255 / 32%); transform: translateY(-1px); }
-.site-header nav .nav-github:active, .site-header nav .nav-install:active { transform: translateY(1px) scale(.98); }
+.site-header nav .nav-github:active, .site-header nav .nav-sponsor:active, .site-header nav .nav-install:active { transform: translateY(1px) scale(.98); }
 .site-header nav .nav-install::after { display: none; }
 .menu-button { position: relative; display: none; width: 44px; min-width: 44px; height: 44px; padding: 0; place-items: center; border: 1px solid var(--line-strong); border-radius: 11px; background: rgb(11 26 36 / 88%); color: var(--text); cursor: pointer; box-shadow: inset 0 1px rgb(255 255 255 / 6%); transition: color .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
 .menu-button:hover { border-color: var(--muted-strong); background: var(--surface-2); }
@@ -259,6 +262,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .workflow-track li:nth-child(n+5) { border-bottom: 0; }
 }
 
+@media (max-width: 1120px) and (min-width: 801px) {
+  .site-header nav .nav-sponsor { width: 44px; padding: 0; justify-content: center; }
+  .site-header nav .nav-sponsor span { display: none; }
+}
+
 @media (max-width: 800px) {
   .js .menu-button { display: grid; }
   .site-header nav { flex: 1 1 100%; flex-wrap: wrap; align-items: stretch; gap: 8px; padding-block: 12px; }
@@ -272,8 +280,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-header .nav-links a[aria-current="location"]::after { transform: scaleY(1); }
   .site-header .nav-links a[aria-current="location"] { background: rgb(16 38 52 / 72%); }
   .nav-link-index { display: inline; }
-  .site-header .nav-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding-top: 4px; border-top: 1px solid rgb(38 59 73 / 72%); }
-  .site-header nav .nav-github, .site-header nav .nav-install { width: 100%; justify-content: center; }
+  .site-header .nav-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; padding-top: 4px; border-top: 1px solid rgb(38 59 73 / 72%); }
+  .site-header nav .nav-github, .site-header nav .nav-sponsor, .site-header nav .nav-install { width: 100%; justify-content: center; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 62px; }
   .hero-visual { width: min(100%, 560px); min-height: 560px; margin-inline: auto; }
   .audience-shell, .benchmark-shell { grid-template-columns: 1fr; }
