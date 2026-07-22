@@ -101,6 +101,11 @@ def validate_site_contract(root: Path) -> list[str]:
     for header_contract in ('class="brand-meta"', 'class="nav-install"', 'class="nav-sponsor"', 'data-nav-section="workflow"'):
         if header_contract not in html:
             errors.append(f"docs/index.html: missing premium header contract {header_contract}")
+    for hero_action_contract in ('class="hero-link hero-evidence-link"', 'class="hero-link hero-source-link"', 'class="hero-link-icon hero-shield-icon"', 'class="hero-link-icon hero-github-icon"'):
+        if hero_action_contract not in html:
+            errors.append(f"docs/index.html: missing hero proof action contract {hero_action_contract}")
+    if 'href="#evidence" data-analytics-event="verified_results_open" data-analytics-placement="hero"' not in html:
+        errors.append("docs/index.html: verified-results hero action lost its destination or analytics contract")
     for audience_outcome in ("Ship production-ready UI", "Standardize quality gates", "Connect intent to evidence", "Add a verifiable Flutter workflow"):
         if audience_outcome not in html:
             errors.append(f"docs/index.html: missing audience outcome {audience_outcome}")
