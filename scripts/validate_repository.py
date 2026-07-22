@@ -18,7 +18,7 @@ BENCHMARK_REQUIRED_FIELDS = (
 SITE_SECTION_ORDER = ("audiences", "workflow", "skills", "evidence", "benchmark", "install")
 SITE_EVENTS = {
     "install_copy", "verified_results_open", "benchmark_artifact_open",
-    "github_open", "audience_path_select", "install_success_help_open",
+    "github_open", "sponsor_open", "audience_path_select", "install_success_help_open",
 }
 PRODUCT_STUDIO_IMAGES = {
     "phone-workspace.png", "phone-audit.png", "phone-system.png",
@@ -106,6 +106,12 @@ def validate_site_contract(root: Path) -> list[str]:
             errors.append(f"docs/index.html: missing audience outcome {audience_outcome}")
     if "analytics-adapter.js" not in html:
         errors.append("docs/index.html: missing analytics adapter")
+    sponsors_url = "https://github.com/sponsors/musabekisakov-imj"
+    if sponsors_url not in html or 'data-analytics-event="sponsor_open"' not in html:
+        errors.append("docs/index.html: missing official GitHub Sponsors CTA")
+    funding_path = root / ".github" / "FUNDING.yml"
+    if not funding_path.exists() or "github: [musabekisakov-imj]" not in funding_path.read_text(encoding="utf-8"):
+        errors.append(".github/FUNDING.yml: missing approved GitHub Sponsors account")
     preview_path = root / "docs" / "assets" / "social-preview.jpg"
     if "assets/social-preview.jpg" not in html or not preview_path.exists():
         errors.append("docs: missing social preview image or Open Graph reference")
