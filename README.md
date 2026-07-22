@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/brand/mark.svg" width="84" height="84" alt="Flutter Design Engineer logo">
+<img src="docs/assets/social-preview.jpg" width="100%" alt="Flutter Design Engineer — seven connected skills and real rendered Flutter evidence">
 
 # Flutter Design Engineer
 

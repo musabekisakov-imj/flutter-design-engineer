@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="ambient" cx="78%" cy="34%" r="62%">
+      <stop offset="0" stop-color="#17384a" stop-opacity=".88"/>
+      <stop offset=".58" stop-color="#0b1a25" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#071019" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screenFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="26" flood-color="#000b12" flood-opacity=".62"/>
+    </filter>
+    <clipPath id="phoneA"><rect x="836" y="72" width="272" height="588" rx="31"/></clipPath>
+    <clipPath id="phoneB"><rect x="1014" y="-6" width="272" height="588" rx="31"/></clipPath>
+  </defs>
+
+  <rect width="1280" height="640" fill="#071019"/>
+  <rect width="1280" height="640" fill="url(#ambient)"/>
+  <path d="M0 1h1280M0 639h1280" stroke="#263b49"/>
+  <path d="M720 0v640" stroke="#263b49" stroke-opacity=".5"/>
+
+  <g transform="translate(72 62)">
+    <image href="brand/mark.svg" width="56" height="56"/>
+    <text x="76" y="27" fill="#f1f5f6" font-family="Avenir Next, Avenir, sans-serif" font-size="24" font-weight="750">Flutter Design Engineer</text>
+    <text x="76" y="50" fill="#d8ff5f" font-family="SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700" letter-spacing="1.6">7 CONNECTED SKILLS</text>
+  </g>
+
+  <g transform="translate(72 185)">
+    <text fill="#f1f5f6" font-family="Avenir Next, Avenir, sans-serif" font-size="65" font-weight="780" letter-spacing="-3.5">
+      <tspan x="0" y="0">A senior Flutter</tspan>
+      <tspan x="0" y="67">design team, inside</tspan>
+      <tspan x="0" y="134">your agent.</tspan>
+    </text>
+    <text x="0" y="184" fill="#bac8ce" font-family="Avenir Next, Avenir, sans-serif" font-size="21" font-weight="500">Seven connected skills · one verified workflow</text>
+  </g>
+
+  <g transform="translate(72 496)">
+    <rect width="615" height="76" rx="12" fill="#050c12" stroke="#3b5260"/>
+    <text x="20" y="45" fill="#d8ff5f" font-family="SFMono-Regular, Menlo, monospace" font-size="18" font-weight="800">$</text>
+    <text x="46" y="45" fill="#e4ebee" font-family="SFMono-Regular, Menlo, monospace" font-size="16">npx skills add musabekisakov-imj/flutter-design-engineer</text>
+  </g>
+
+  <g filter="url(#shadow)" transform="rotate(-5 972 366)">
+    <rect x="836" y="72" width="272" height="588" rx="31" fill="#f7f6f2" stroke="#ffffff" stroke-opacity=".28" stroke-width="2"/>
+    <image href="product-studio/phone-workspace.png" x="836" y="72" width="272" height="588" preserveAspectRatio="xMidYMid slice" clip-path="url(#phoneA)"/>
+    <rect x="836" y="72" width="272" height="588" rx="31" fill="url(#screenFade)" pointer-events="none"/>
+  </g>
+  <g filter="url(#shadow)" transform="rotate(5 1150 288)">
+    <rect x="1014" y="-6" width="272" height="588" rx="31" fill="#f7f6f2" stroke="#ffffff" stroke-opacity=".28" stroke-width="2"/>
+    <image href="product-studio/phone-release.png" x="1014" y="-6" width="272" height="588" preserveAspectRatio="xMidYMid slice" clip-path="url(#phoneB)"/>
+    <rect x="1014" y="-6" width="272" height="588" rx="31" fill="url(#screenFade)" pointer-events="none"/>
+  </g>
+
+  <g transform="translate(936 560)">
+    <rect width="280" height="46" rx="9" fill="#0b1722" fill-opacity=".96" stroke="#3b5260"/>
+    <circle cx="22" cy="23" r="5" fill="#d8ff5f"/>
+    <text x="38" y="28" fill="#f1f5f6" font-family="Avenir Next, Avenir, sans-serif" font-size="14" font-weight="700">Rendered Flutter evidence</text>
+  </g>
+</svg>
