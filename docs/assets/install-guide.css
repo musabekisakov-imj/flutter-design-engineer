@@ -34,13 +34,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .skip-link { position: fixed; z-index: 20; top: 12px; left: 12px; padding: 10px 14px; background: var(--text); color: var(--canvas); transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
 
-.site-header { position: relative; z-index: 10; width: min(var(--max), calc(100% - 48px)); min-height: 72px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: .86rem; font-weight: 750; letter-spacing: -.02em; text-decoration: none; }
-.brand-mark { display: block; width: 32px; height: 32px; flex: 0 0 32px; }
-.site-header nav, .site-footer nav { display: flex; align-items: center; gap: 26px; }
-.site-header nav a, .site-footer nav a { color: var(--muted-strong); font-size: .78rem; font-weight: 650; text-decoration: none; transition: color .2s var(--ease); }
+.site-header { position: sticky; z-index: 10; top: 12px; width: min(var(--max), calc(100% - 48px)); min-height: 68px; margin: 12px auto 0; padding: 8px 10px 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgb(59 82 96 / 78%); border-radius: 14px; background: rgb(7 16 25 / 82%); box-shadow: 0 12px 40px rgb(0 9 15 / 18%), inset 0 1px rgb(255 255 255 / 4%); backdrop-filter: blur(18px) saturate(135%); transition: min-height .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease); }
+.site-header.is-compact { min-height: 58px; background: rgb(7 16 25 / 94%); box-shadow: 0 18px 55px rgb(0 9 15 / 42%), inset 0 1px rgb(255 255 255 / 5%); }
+.brand { min-width: 0; display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: .88rem; font-weight: 750; letter-spacing: -.025em; text-decoration: none; }
+.brand-mark { display: block; width: 36px; height: 36px; flex: 0 0 36px; transition: width .25s var(--ease), height .25s var(--ease), flex-basis .25s var(--ease); }
+.site-header.is-compact .brand-mark { width: 32px; height: 32px; flex-basis: 32px; }
+.brand-meta { padding: 4px 7px; border: 1px solid var(--line); border-radius: 6px; color: var(--accent-light); font: 750 .58rem/1 monospace; letter-spacing: .04em; text-transform: uppercase; }
+.site-header nav, .site-footer nav { display: flex; align-items: center; gap: 24px; }
+.site-header nav a, .site-footer nav a { position: relative; color: var(--muted-strong); font-size: .76rem; font-weight: 650; text-decoration: none; transition: color .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
 .site-header nav a:hover, .site-footer nav a:hover { color: var(--text); }
-.nav-github { min-height: 42px; display: inline-flex; align-items: center; padding: 0 13px; border: 1px solid var(--line-strong); border-radius: 9px; }
+.site-header nav a[data-nav-section]::after { content: ""; position: absolute; right: 0; bottom: -9px; left: 0; height: 2px; border-radius: 2px; background: var(--accent); opacity: 0; transform: scaleX(.25); transition: opacity .2s var(--ease), transform .2s var(--ease); }
+.site-header nav a[aria-current="location"] { color: var(--text); }
+.site-header nav a[aria-current="location"]::after { opacity: 1; transform: scaleX(1); }
+.nav-github, .nav-install { min-height: 42px; display: inline-flex; align-items: center; padding: 0 13px; border: 1px solid var(--line-strong); border-radius: 9px; }
+.site-header nav .nav-install { border-color: var(--accent); background: var(--accent); color: var(--canvas); font-weight: 800; }
+.site-header nav .nav-install:hover { border-color: var(--accent-light); background: var(--accent-light); color: var(--canvas); transform: translateY(-1px); }
+.site-header nav .nav-install:active { transform: scale(.98); }
+.site-header nav .nav-install::after { display: none; }
 .menu-button { display: none; min-width: 48px; min-height: 44px; border: 1px solid var(--line-strong); border-radius: 9px; background: var(--surface); color: var(--text); font-size: .75rem; font-weight: 750; }
 
 .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(390px, .82fr); align-items: center; gap: clamp(32px, 4vw, 58px); min-height: min(820px, calc(100dvh - 72px)); padding-block: clamp(58px, 7vw, 88px); }
@@ -194,10 +204,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 800px) {
   .js .menu-button { display: inline-block; }
   .site-header nav { flex-wrap: wrap; justify-content: flex-end; gap: 10px 18px; padding-block: 12px; }
-  .js .site-header nav { position: absolute; top: 64px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+  .js .site-header nav { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: none; align-items: stretch; gap: 3px; padding: 10px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgb(11 23 34 / 98%); box-shadow: var(--shadow); backdrop-filter: blur(18px); }
   .js .site-header nav.is-open { display: grid; }
-  .site-header nav a { min-height: 46px; display: flex; align-items: center; padding-inline: 12px; }
+  .site-header nav a { min-height: 46px; display: flex; align-items: center; padding-inline: 12px; border-radius: 8px; }
+  .site-header nav a[data-nav-section]::after { top: 10px; right: auto; bottom: 10px; left: 0; width: 2px; height: auto; }
   .nav-github { border: 0; }
+  .site-header nav .nav-install { justify-content: space-between; margin-top: 4px; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 62px; }
   .hero-visual { width: min(100%, 560px); min-height: 560px; margin-inline: auto; }
   .audience-shell, .benchmark-shell { grid-template-columns: 1fr; }
@@ -225,8 +237,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 620px) {
   .shell, .site-header { width: min(var(--max), calc(100% - 28px)); }
-  .site-header { min-height: 64px; }
+  .site-header { top: 8px; min-height: 64px; margin-top: 8px; padding-left: 9px; }
   .brand { font-size: .76rem; }
+  .brand-name { white-space: nowrap; }
+  .brand-meta { display: none; }
   .hero { padding-block: 48px 68px; gap: 22px; }
   .hero h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
   .hero-copy > p { margin-block: 20px 24px; }

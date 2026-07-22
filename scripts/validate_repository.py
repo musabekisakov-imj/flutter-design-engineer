@@ -98,6 +98,9 @@ def validate_site_contract(root: Path) -> list[str]:
 
     if "No score published" not in html or "Protocol ready" not in html:
         errors.append("docs/index.html: benchmark pending state must forbid implied results")
+    for header_contract in ('class="brand-meta"', 'class="nav-install"', 'data-nav-section="workflow"'):
+        if header_contract not in html:
+            errors.append(f"docs/index.html: missing premium header contract {header_contract}")
     if "analytics-adapter.js" not in html:
         errors.append("docs/index.html: missing analytics adapter")
     if not analytics_path.exists():

@@ -3,6 +3,7 @@ document.documentElement.classList.add("js");
 const copyStatus = document.querySelector("#copy-status");
 const menuButton = document.querySelector(".menu-button");
 const primaryNav = document.querySelector("#primary-nav");
+const siteHeader = document.querySelector(".site-header");
 
 function track(name, properties = {}) {
   if (window.fdeAnalytics && typeof window.fdeAnalytics.track === "function") {
@@ -64,6 +65,32 @@ if (menuButton && primaryNav) {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMenu();
   });
+}
+
+if (siteHeader) {
+  const updateHeaderDensity = () => siteHeader.classList.toggle("is-compact", window.scrollY > 24);
+  updateHeaderDensity();
+  window.addEventListener("scroll", updateHeaderDensity, { passive: true });
+
+  const sectionLinks = [...siteHeader.querySelectorAll("[data-nav-section]")];
+  const observedSections = sectionLinks
+    .map((link) => document.getElementById(link.dataset.navSection))
+    .filter(Boolean);
+  if ("IntersectionObserver" in window) {
+    const visibleSections = new Map();
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visibleSections.set(entry.target.id, entry.intersectionRatio);
+        else visibleSections.delete(entry.target.id);
+      });
+      const active = [...visibleSections.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+      sectionLinks.forEach((link) => {
+        if (link.dataset.navSection === active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    }, { rootMargin: "-18% 0px -62% 0px", threshold: [0, .1, .25, .5] });
+    observedSections.forEach((section) => navObserver.observe(section));
+  }
 }
 
 async function copyText(text) {
