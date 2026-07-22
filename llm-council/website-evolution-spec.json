@@ -1,0 +1,33 @@
+{
+  "task": "Codex-only council parser-fixed rerun: produce an implementation plan for the approved Flutter Design Engineer website evolution. The plan must implement the committed design contract at docs/superpowers/specs/2026-07-22-website-conversion-benchmark-evolution-design.md in four independently releasable phases: (1) conversion-focused static homepage evolution preserving the existing identity and real Flutter evidence, (2) a controlled Codex baseline-versus-skill-guided benchmark with append-only artifacts, schema validation, blinded scoring and CI-generated static website output, (3) authentic GitHub and testimonial social proof with correct attribution and safe omission when unavailable, and (4) evidence-led expansion only when analytics justifies it. Read the repository and its existing product, logo, showcase and benchmark contracts before planning. Provide exact file paths, dependencies, acceptance criteria, rollback boundaries, risks and a test matrix. Do not implement anything and do not invent benchmark results, testimonials, adoption metrics, partnerships or absolute conversion targets.",
+  "constraints": [
+    "Treat docs/superpowers/specs/2026-07-22-website-conversion-benchmark-evolution-design.md as the primary approved contract.",
+    "Preserve the static HTML/CSS/progressive-JavaScript GitHub Pages architecture; no framework migration or runtime backend.",
+    "Preserve the existing brand mark and Product Studio golden-test evidence.",
+    "Primary conversion is install command copy; secondary conversions are verified-result, benchmark-artifact and qualified GitHub visits.",
+    "Analytics must be cookie-free, provider-isolated and a safe no-op when unavailable.",
+    "The first benchmark covers Codex only and must use equal declared conditions for baseline and skill-guided runs.",
+    "Benchmark artifacts are append-only, machine-readable, schema-validated and published statically by CI.",
+    "Primary content and installation paths must remain usable without JavaScript.",
+    "Do not weaken repository validation, rendered visual QA, accessibility, reduced-motion or post-deploy smoke-test gates.",
+    "Keep phases independently shippable and reversible; avoid speculative platform features before evidence supports them."
+  ],
+  "repo_context": {
+    "root": ".",
+    "paths": [
+      "AGENTS.md",
+      "docs/index.html",
+      "docs/assets/install-guide.css",
+      "docs/assets/install-guide.js",
+      "docs/assets/brand/mark.svg",
+      "docs/superpowers/specs/2026-07-22-website-conversion-benchmark-evolution-design.md",
+      "docs/superpowers/specs/2026-07-22-flutter-product-studio-mobile-showcase-design.md",
+      "docs/superpowers/specs/2026-07-22-flutter-design-engineer-logo-system-design.md",
+      "benchmarks/connected-command-center",
+      "scripts/validate_repository.py",
+      "tests",
+      ".github/workflows"
+    ],
+    "notes": "The current public site is already deployed on GitHub Pages and has a polished dark/cyan/lime identity, seven interactive skill tabs, four agent installation routes, real Product Studio Flutter goldens, an error state and an adaptive tablet proof. Plan an evolution, not a rewrite. The repository has strict product-contract and rendered-evidence guidance in AGENTS.md. Existing benchmark documentation describes a reproducible protocol but measured model rows are still pending."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "judge": {
+    "kind": "codex",
+    "model": "gpt-5.6-sol",
+    "name": "codex-judge",
+    "reasoning_effort": "high"
+  },
+  "planners": [
+    {
+      "kind": "codex",
+      "model": "gpt-5.6-sol",
+      "name": "codex-planner-1",
+      "reasoning_effort": "high"
+    },
+    {
+      "kind": "codex",
+      "model": "gpt-5.6-sol",
+      "name": "codex-planner-2",
+      "reasoning_effort": "high"
+    }
+  ]
+}
