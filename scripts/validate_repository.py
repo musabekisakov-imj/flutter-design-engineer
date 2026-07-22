@@ -98,7 +98,7 @@ def validate_site_contract(root: Path) -> list[str]:
 
     if "No score published" not in html or "Protocol ready" not in html:
         errors.append("docs/index.html: benchmark pending state must forbid implied results")
-    for header_contract in ('class="brand-meta"', 'class="nav-install"', 'data-nav-section="workflow"'):
+    for header_contract in ('class="brand-meta"', 'class="nav-install"', 'class="nav-sponsor"', 'data-nav-section="workflow"'):
         if header_contract not in html:
             errors.append(f"docs/index.html: missing premium header contract {header_contract}")
     for audience_outcome in ("Ship production-ready UI", "Standardize quality gates", "Connect intent to evidence", "Add a verifiable Flutter workflow"):
@@ -109,6 +109,8 @@ def validate_site_contract(root: Path) -> list[str]:
     sponsors_url = "https://github.com/sponsors/musabekisakov-imj"
     if sponsors_url not in html or 'data-analytics-event="sponsor_open"' not in html:
         errors.append("docs/index.html: missing official GitHub Sponsors CTA")
+    if 'class="nav-sponsor"' not in html or 'data-analytics-placement="header"' not in html:
+        errors.append("docs/index.html: missing header Sponsor discovery action")
     funding_path = root / ".github" / "FUNDING.yml"
     if not funding_path.exists() or "github: [musabekisakov-imj]" not in funding_path.read_text(encoding="utf-8"):
         errors.append(".github/FUNDING.yml: missing approved GitHub Sponsors account")
