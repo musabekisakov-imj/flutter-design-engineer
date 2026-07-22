@@ -50,20 +50,32 @@ function setupTablist(tablist) {
 document.querySelectorAll('[role="tablist"]').forEach(setupTablist);
 
 if (menuButton && primaryNav) {
-  function closeMenu() {
-    menuButton.setAttribute("aria-expanded", "false");
-    primaryNav.classList.remove("is-open");
+  function setMenuState(open) {
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close menu" : "Menu");
+    primaryNav.classList.toggle("is-open", open);
   }
 
   menuButton.addEventListener("click", () => {
     const expanded = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!expanded));
-    primaryNav.classList.toggle("is-open", !expanded);
+    setMenuState(!expanded);
   });
 
-  primaryNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  primaryNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuState(false)));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key !== "Escape" || menuButton.getAttribute("aria-expanded") !== "true") return;
+    const focusWasInMenu = primaryNav.contains(document.activeElement);
+    setMenuState(false);
+    if (focusWasInMenu) menuButton.focus();
+  });
+  document.addEventListener("pointerdown", (event) => {
+    if (menuButton.getAttribute("aria-expanded") !== "true" || siteHeader.contains(event.target)) return;
+    setMenuState(false);
+  });
+
+  const mobileHeaderQuery = window.matchMedia("(max-width: 800px)");
+  mobileHeaderQuery.addEventListener("change", (event) => {
+    if (!event.matches) setMenuState(false);
   });
 }
 
