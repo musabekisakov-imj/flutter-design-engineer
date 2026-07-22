@@ -101,11 +101,23 @@ def validate_site_contract(root: Path) -> list[str]:
     for header_contract in ('class="brand-meta"', 'class="nav-install"', 'class="nav-sponsor"', 'data-nav-section="workflow"'):
         if header_contract not in html:
             errors.append(f"docs/index.html: missing premium header contract {header_contract}")
-    for hero_action_contract in ('class="hero-link hero-evidence-link"', 'class="hero-link hero-source-link"', 'class="hero-link-icon hero-shield-icon"', 'class="hero-link-icon hero-github-icon"'):
+    for hero_action_contract in ('class="hero-link hero-evidence-link"', 'class="hero-link hero-star-link"', 'class="hero-link-icon hero-shield-icon"', 'class="hero-link-icon hero-star-icon"'):
         if hero_action_contract not in html:
             errors.append(f"docs/index.html: missing hero proof action contract {hero_action_contract}")
     if 'href="#evidence" data-analytics-event="verified_results_open" data-analytics-placement="hero"' not in html:
         errors.append("docs/index.html: verified-results hero action lost its destination or analytics contract")
+    if "From product intent to verified Flutter UI." not in html:
+        errors.append("docs/index.html: missing approved outcome-first hero statement")
+    if 'class="proof-rail shell reveal"' not in html:
+        errors.append("docs/index.html: missing evidence-led proof rail")
+    for proof_placement in ("proof-rail-skills", "proof-rail-source", "proof-rail-qa", "hero-star", "evidence-star"):
+        if f'data-analytics-placement="{proof_placement}"' not in html:
+            errors.append(f"docs/index.html: missing growth analytics placement {proof_placement}")
+    if html.count("Inspect output") != 6:
+        errors.append("docs/index.html: every primary Flutter golden must expose one Inspect output link")
+    for prohibited_claim in ("Trusted by thousands", "10k+ users", "Live Star count"):
+        if prohibited_claim in html:
+            errors.append(f"docs/index.html: unverified adoption claim is forbidden: {prohibited_claim}")
     for audience_outcome in ("Ship production-ready UI", "Standardize quality gates", "Connect intent to evidence", "Add a verifiable Flutter workflow"):
         if audience_outcome not in html:
             errors.append(f"docs/index.html: missing audience outcome {audience_outcome}")
