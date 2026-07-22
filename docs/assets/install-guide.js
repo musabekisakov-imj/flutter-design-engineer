@@ -4,6 +4,7 @@ const copyStatus = document.querySelector("#copy-status");
 const menuButton = document.querySelector(".menu-button");
 const primaryNav = document.querySelector("#primary-nav");
 const siteHeader = document.querySelector(".site-header");
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function track(name, properties = {}) {
   if (window.fdeAnalytics && typeof window.fdeAnalytics.track === "function") {
@@ -17,7 +18,7 @@ function setupTablist(tablist) {
     .map((tab) => document.getElementById(tab.getAttribute("aria-controls")))
     .filter(Boolean);
 
-  function activate(nextTab, moveFocus = false) {
+  function activate(nextTab, moveFocus = false, animatePanel = false) {
     tabs.forEach((tab) => {
       const selected = tab === nextTab;
       tab.setAttribute("aria-selected", String(selected));
@@ -26,11 +27,19 @@ function setupTablist(tablist) {
     panels.forEach((panel) => {
       panel.hidden = panel.id !== nextTab.getAttribute("aria-controls");
     });
+    const nextPanel = document.getElementById(nextTab.getAttribute("aria-controls"));
+    if (animatePanel && nextPanel && !reducedMotionQuery.matches) {
+      nextPanel.getAnimations().forEach((animation) => animation.cancel());
+      nextPanel.animate(
+        [{ opacity: .55, filter: "blur(2px)" }, { opacity: 1, filter: "blur(0)" }],
+        { duration: 180, easing: "cubic-bezier(.23, 1, .32, 1)" },
+      );
+    }
     if (moveFocus) nextTab.focus();
   }
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activate(tab));
+    tab.addEventListener("click", () => activate(tab, false, true));
     tab.addEventListener("keydown", (event) => {
       let nextIndex;
       if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
@@ -136,6 +145,13 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
       await copyText(target.textContent.trim());
       button.textContent = "Copied";
       button.classList.add("is-copied");
+      if (!reducedMotionQuery.matches) {
+        button.getAnimations().forEach((animation) => animation.cancel());
+        button.animate(
+          [{ opacity: .6, filter: "blur(2px)" }, { opacity: 1, filter: "blur(0)" }],
+          { duration: 180, easing: "cubic-bezier(.23, 1, .32, 1)" },
+        );
+      }
       if (copyStatus) copyStatus.textContent = "Copied to clipboard.";
       track("install_copy", {
         route: button.dataset.installRoute,
@@ -163,7 +179,7 @@ document.querySelectorAll("[data-analytics-event]").forEach((element) => {
 });
 
 const revealItems = [...document.querySelectorAll(".reveal")];
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if ("IntersectionObserver" in window && !reducedMotionQuery.matches) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
