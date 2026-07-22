@@ -12,6 +12,9 @@
 
 </div>
 
+> [!NOTE]
+> If this workflow helps your team, you can [sponsor its continued development](https://github.com/sponsors/musabekisakov-imj). Sponsorship funds new Flutter workflows, deterministic fixtures, and visual QA research.
+
 ## Same model. Same prompt. Different workflow.
 
 Flutter Design Engineer is a model-agnostic skill system for Claude Code, Codex, and compatible coding agents. It changes the workflow around the model: establish product intent, define states and visual direction, implement adaptively, then inspect rendered evidence.

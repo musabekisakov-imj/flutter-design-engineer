@@ -4,13 +4,14 @@
     "verified_results_open",
     "benchmark_artifact_open",
     "github_open",
+    "sponsor_open",
     "audience_path_select",
     "install_success_help_open",
   ]);
   const allowedKeys = new Set(["route", "placement", "audience"]);
   const allowedValues = new Set([
     "all", "single-skill", "claude", "codex", "gemini", "cursor",
-    "hero", "header", "trust", "benchmark", "rubric", "installer", "skills", "final",
+    "hero", "header", "trust", "benchmark", "rubric", "installer", "skills", "final", "support", "footer",
     "developer", "tech-lead", "product-team", "ai-platform",
   ]);
 
