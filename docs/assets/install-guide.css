@@ -47,10 +47,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-header nav a[data-nav-section]::after { content: ""; position: absolute; right: 0; bottom: -9px; left: 0; height: 2px; border-radius: 2px; background: var(--accent); opacity: 0; transform: scaleX(.25); transition: opacity .2s var(--ease), transform .2s var(--ease); }
 .site-header nav a[aria-current="location"] { color: var(--text); }
 .site-header nav a[aria-current="location"]::after { opacity: 1; transform: scaleX(1); }
-.nav-github, .nav-install { min-height: 42px; display: inline-flex; align-items: center; padding: 0 13px; border: 1px solid var(--line-strong); border-radius: 9px; }
-.site-header nav .nav-install { border-color: var(--accent); background: var(--accent); color: var(--canvas); font-weight: 800; }
-.site-header nav .nav-install:hover { border-color: var(--accent-light); background: var(--accent-light); color: var(--canvas); transform: translateY(-1px); }
-.site-header nav .nav-install:active { transform: scale(.98); }
+.nav-github, .nav-install { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 10px; }
+.nav-action-icon { display: block; width: 18px; height: 18px; flex: 0 0 auto; }
+.nav-github { background: rgb(11 23 34 / 52%); box-shadow: inset 0 1px rgb(255 255 255 / 4%); }
+.nav-github-mark { transform: translateY(-.5px); }
+.nav-external-icon { width: 13px; height: 13px; margin-left: -2px; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: color .2s var(--ease), transform .2s var(--ease); }
+.site-header nav .nav-github:hover { border-color: var(--muted-strong); background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
+.site-header nav .nav-github:hover .nav-external-icon { color: var(--accent-light); transform: translate(1px, -1px); }
+.site-header nav .nav-install { min-width: 104px; justify-content: center; border-color: var(--accent); background: var(--accent); color: var(--canvas); font-weight: 800; box-shadow: 0 9px 24px rgb(139 172 37 / 14%), inset 0 1px rgb(255 255 255 / 26%); }
+.nav-install-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transform: translateY(-.5px); }
+.site-header nav .nav-install:hover { border-color: var(--accent-light); background: var(--accent-light); color: var(--canvas); box-shadow: 0 12px 30px rgb(139 172 37 / 21%), inset 0 1px rgb(255 255 255 / 32%); transform: translateY(-1px); }
+.site-header nav .nav-github:active, .site-header nav .nav-install:active { transform: translateY(1px) scale(.98); }
 .site-header nav .nav-install::after { display: none; }
 .menu-button { display: none; min-width: 48px; min-height: 44px; border: 1px solid var(--line-strong); border-radius: 9px; background: var(--surface); color: var(--text); font-size: .75rem; font-weight: 750; }
 
@@ -226,7 +233,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .js .site-header nav.is-open { display: grid; }
   .site-header nav a { min-height: 46px; display: flex; align-items: center; padding-inline: 12px; border-radius: 8px; }
   .site-header nav a[data-nav-section]::after { top: 10px; right: auto; bottom: 10px; left: 0; width: 2px; height: auto; }
-  .nav-github { border: 0; }
+  .nav-github { border-color: transparent; background: transparent; box-shadow: none; }
+  .site-header nav .nav-github:hover { border-color: var(--line); background: var(--surface-2); }
   .site-header nav .nav-install { justify-content: space-between; margin-top: 4px; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 62px; }
   .hero-visual { width: min(100%, 560px); min-height: 560px; margin-inline: auto; }
