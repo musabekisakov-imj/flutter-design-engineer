@@ -101,6 +101,9 @@ def validate_site_contract(root: Path) -> list[str]:
     for header_contract in ('class="brand-meta"', 'class="nav-install"', 'data-nav-section="workflow"'):
         if header_contract not in html:
             errors.append(f"docs/index.html: missing premium header contract {header_contract}")
+    for audience_outcome in ("Ship production-ready UI", "Standardize quality gates", "Connect intent to evidence", "Add a verifiable Flutter workflow"):
+        if audience_outcome not in html:
+            errors.append(f"docs/index.html: missing audience outcome {audience_outcome}")
     if "analytics-adapter.js" not in html:
         errors.append("docs/index.html: missing analytics adapter")
     if not analytics_path.exists():
