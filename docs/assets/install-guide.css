@@ -112,11 +112,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .section-kicker, .panel-label { margin: 0 0 16px; color: var(--accent-light); font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
 
 .workflow-track { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.workflow-track li { position: relative; min-height: 230px; display: flex; flex-direction: column; padding: 22px 18px; border-right: 1px solid var(--line); background: linear-gradient(180deg, var(--surface), rgb(8 19 28 / 75%)); }
+.workflow-track li { position: relative; min-height: 300px; display: flex; flex-direction: column; padding: 22px 18px; isolation: isolate; overflow: hidden; border-right: 1px solid var(--line); background: radial-gradient(circle at 50% 36%, rgb(20 40 53 / 72%), transparent 35%), linear-gradient(180deg, #071019 0%, var(--surface) 68%, rgb(8 19 28 / 78%) 100%); }
+.workflow-track li::after { content: ""; position: absolute; z-index: 0; top: 62px; left: 50%; width: 82%; aspect-ratio: 1; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgb(216 255 95 / 8%), transparent 68%); opacity: 0; transform: translateX(-50%) scale(.72); transition: opacity .28s var(--ease), transform .32s var(--ease); }
+.workflow-track li > * { position: relative; z-index: 1; }
 .workflow-track li:last-child { border-right: 0; }
 .workflow-track li > span { color: var(--accent-light); font: 750 .66rem monospace; }
+.workflow-icon { display: block; width: min(100%, 112px); height: auto; margin: 8px auto -2px; object-fit: contain; filter: saturate(.92) contrast(1.02); -webkit-mask-image: radial-gradient(circle, #000 0 58%, rgb(0 0 0 / 94%) 68%, transparent 86%); mask-image: radial-gradient(circle, #000 0 58%, rgb(0 0 0 / 94%) 68%, transparent 86%); transform: translateZ(0); transform-origin: 50% 62%; transition: transform .32s var(--ease), filter .32s var(--ease); }
 .workflow-track strong { margin-top: auto; font-size: .96rem; line-height: 1.25; }
 .workflow-track small { margin-top: 10px; color: var(--muted); font-size: .67rem; line-height: 1.4; }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .workflow-track li:hover::after { opacity: 1; transform: translateX(-50%) scale(1); }
+  .workflow-track li:hover .workflow-icon { filter: saturate(1.04) contrast(1.04) drop-shadow(0 13px 16px rgb(0 7 12 / 38%)); transform: translateY(-5px) rotateX(2deg) rotateY(-3deg) scale(1.035); }
+}
 
 .registry, .install { border-block: 1px solid var(--line); background: #08131d; }
 .registry-shell { display: grid; grid-template-columns: .72fr 1.28fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
@@ -205,7 +213,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero { grid-template-columns: 1fr 390px; }
   .hero h1 { font-size: clamp(3.2rem, 6vw, 5rem); }
   .workflow-track { grid-template-columns: repeat(4, 1fr); }
-  .workflow-track li { min-height: 180px; border-bottom: 1px solid var(--line); }
+  .workflow-track li { min-height: 280px; border-bottom: 1px solid var(--line); }
+  .workflow-icon { width: 118px; }
   .workflow-track li:nth-child(4) { border-right: 0; }
   .workflow-track li:nth-child(n+5) { border-bottom: 0; }
 }
@@ -224,6 +233,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .audience-shell, .benchmark-shell { grid-template-columns: 1fr; }
   .audience-intro { padding: 34px 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .workflow-track { grid-template-columns: 1fr 1fr; }
+  .workflow-track li { min-height: 275px; }
+  .workflow-icon { width: 124px; }
   .workflow-track li:nth-child(even) { border-right: 0; }
   .workflow-track li:nth-child(n+5) { border-bottom: 1px solid var(--line); }
   .workflow-track li:last-child { border-bottom: 0; }
@@ -273,7 +284,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section-heading { margin-bottom: 34px; }
   .section-heading h2, .technical h2 { font-size: clamp(2.35rem, 12vw, 3.6rem); }
   .workflow-track { grid-template-columns: 1fr; }
-  .workflow-track li { min-height: 145px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .workflow-track li { min-height: 168px; display: grid; grid-template-columns: minmax(0, 1fr) 104px; grid-template-areas: "label icon" "title icon" "description icon"; align-content: center; column-gap: 16px; padding: 20px 18px 22px; border-right: 0; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 88% 48%, rgb(20 40 53 / 78%), transparent 32%), linear-gradient(90deg, var(--surface), #071019); }
+  .workflow-track li::after { top: 50%; right: -6px; left: auto; width: 116px; transform: translateY(-50%) scale(.8); }
+  .workflow-track li > span { grid-area: label; align-self: end; }
+  .workflow-icon { grid-area: icon; align-self: center; width: 104px; margin: 0; }
+  .workflow-track strong { grid-area: title; align-self: center; margin-top: 15px; font-size: 1.02rem; }
+  .workflow-track small { grid-area: description; align-self: start; margin-top: 8px; }
   .workflow-track li:nth-child(n+5) { border-bottom: 1px solid var(--line); }
   .workflow-track li:last-child { border-bottom: 0; }
   .skill-tabs { grid-template-columns: 1fr; max-height: 282px; overflow-y: auto; }
