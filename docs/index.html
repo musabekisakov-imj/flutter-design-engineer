@@ -10,8 +10,9 @@
   <meta property="og:type" content="website">
   <title>Flutter Design Engineer | Seven connected agent skills</title>
   <link rel="icon" href="assets/brand/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/install-guide.css?v=9">
-  <script src="assets/install-guide.js?v=5" defer></script>
+  <link rel="stylesheet" href="assets/install-guide.css?v=10">
+  <script src="assets/analytics-adapter.js?v=1" defer></script>
+  <script src="assets/install-guide.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,8 +27,9 @@
       <a href="#workflow">Workflow</a>
       <a href="#skills">Skills</a>
       <a href="#evidence">Evidence</a>
+      <a href="#benchmark">Benchmark</a>
       <a href="#install">Install</a>
-      <a class="nav-github" href="https://github.com/musabekisakov-imj/flutter-design-engineer">GitHub <span aria-hidden="true">↗</span></a>
+      <a class="nav-github" href="https://github.com/musabekisakov-imj/flutter-design-engineer" data-analytics-event="github_open" data-analytics-placement="header">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -40,9 +42,12 @@
           <div class="command command-primary">
             <span aria-hidden="true">$</span>
             <code id="hero-command">npx skills add musabekisakov-imj/flutter-design-engineer</code>
-            <button type="button" data-copy-target="hero-command">Copy</button>
+            <button type="button" data-copy-target="hero-command" data-install-route="all" data-analytics-placement="hero">Install all 7 skills</button>
           </div>
-          <a href="https://github.com/musabekisakov-imj/flutter-design-engineer">Inspect the source <span aria-hidden="true">↗</span></a>
+          <div class="hero-links">
+            <a class="hero-evidence-link" href="#evidence" data-analytics-event="verified_results_open" data-analytics-placement="hero">See verified results <span aria-hidden="true">↓</span></a>
+            <a href="https://github.com/musabekisakov-imj/flutter-design-engineer" data-analytics-event="github_open" data-analytics-placement="hero">Inspect the source <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
 
@@ -57,12 +62,18 @@
       </div>
     </section>
 
-    <section class="facts" aria-label="Repository facts">
-      <div class="facts-grid shell">
-        <div><strong>07</strong><span>focused skills</span></div>
-        <div><strong>04</strong><span>agent targets</span></div>
-        <div><strong>01</strong><span>connected workflow</span></div>
-        <div><strong>MIT</strong><span>open source</span></div>
+    <section class="audiences" id="audiences" aria-labelledby="audiences-title">
+      <div class="shell audience-shell">
+        <div class="audience-intro">
+          <p class="section-kicker">Choose your path</p>
+          <h2 id="audiences-title">One quality bar. Four responsibilities.</h2>
+        </div>
+        <div class="audience-grid">
+          <a href="#workflow" data-analytics-event="audience_path_select" data-analytics-audience="developer"><span>01</span><strong>Flutter developer</strong><p>Move from a vague prompt to production-ready, rendered Flutter UI.</p></a>
+          <a href="#skills" data-analytics-event="audience_path_select" data-analytics-audience="tech-lead"><span>02</span><strong>Tech lead</strong><p>Apply repeatable design and verification gates across a project.</p></a>
+          <a href="#evidence" data-analytics-event="audience_path_select" data-analytics-audience="product-team"><span>03</span><strong>Product team</strong><p>Keep intent, states, accessibility, and evidence connected.</p></a>
+          <a href="#benchmark" data-analytics-event="audience_path_select" data-analytics-audience="ai-platform"><span>04</span><strong>AI platform</strong><p>Inspect a model-agnostic workflow with source-visible boundaries.</p></a>
+        </div>
       </div>
     </section>
 
@@ -99,7 +110,7 @@
             <button id="skill-tab-qa" role="tab" aria-selected="false" aria-controls="skill-panel-qa" tabindex="-1">flutter-visual-qa <span>Verify</span></button>
           </div>
           <div class="skill-panels">
-            <article id="skill-panel-design" role="tabpanel" aria-labelledby="skill-tab-design"><p class="panel-label">Connected orchestrator</p><h3>Carry product intent through every quality gate.</h3><p>Use for complete UI design or redesign work. It inspects the repository, routes specialist passes, requires approval before implementation, and closes with rendered evidence.</p><div class="panel-output"><span>Produces</span><strong>Approved UX, production UI, verified screenshots</strong></div><div class="command"><code id="skill-design-command">npx skills add musabekisakov-imj/flutter-design-engineer --skill flutter-design</code><button type="button" data-copy-target="skill-design-command">Copy</button></div></article>
+            <article id="skill-panel-design" role="tabpanel" aria-labelledby="skill-tab-design"><p class="panel-label">Connected orchestrator</p><h3>Carry product intent through every quality gate.</h3><p>Use for complete UI design or redesign work. It inspects the repository, routes specialist passes, requires approval before implementation, and closes with rendered evidence.</p><div class="panel-output"><span>Produces</span><strong>Approved UX, production UI, verified screenshots</strong></div><div class="command"><code id="skill-design-command">npx skills add musabekisakov-imj/flutter-design-engineer --skill flutter-design</code><button type="button" data-copy-target="skill-design-command" data-install-route="single-skill" data-analytics-placement="skills">Copy</button></div></article>
             <article id="skill-panel-audit" role="tabpanel" aria-labelledby="skill-tab-audit"><p class="panel-label">Diagnostic specialist</p><h3>Find hierarchy and interaction problems before editing.</h3><p>Use when an existing Flutter interface feels unclear, inconsistent, or fragile across screen sizes.</p><div class="panel-output"><span>Produces</span><strong>Evidence-backed findings and priorities</strong></div></article>
             <article id="skill-panel-system" role="tabpanel" aria-labelledby="skill-tab-system"><p class="panel-label">System specialist</p><h3>Turn visual choices into semantic Flutter foundations.</h3><p>Use for tokens, themes, typography, spacing, component contracts, and state consistency.</p><div class="panel-output"><span>Produces</span><strong>Reusable semantic design system</strong></div></article>
             <article id="skill-panel-build" role="tabpanel" aria-labelledby="skill-tab-build"><p class="panel-label">Implementation specialist</p><h3>Build approved interfaces in the project native style.</h3><p>Use after UX approval for adaptive widgets, complete states, and production-ready Flutter composition.</p><div class="panel-output"><span>Produces</span><strong>Integrated Flutter implementation</strong></div></article>
@@ -132,6 +143,30 @@
       <p class="evidence-note">Real Flutter golden-test outputs from deterministic Aurora fixtures. No live AI service or production backend is claimed.</p>
     </section>
 
+    <section class="benchmark section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="shell benchmark-shell">
+        <div class="benchmark-copy">
+          <p class="section-kicker">Controlled Codex benchmark</p>
+          <h2 id="benchmark-title">Same task. Different workflow.</h2>
+          <p>The protocol is ready. Measured baseline and skill-guided results remain unpublished until both runs complete under equal declared conditions.</p>
+          <div class="benchmark-actions">
+            <a href="https://github.com/musabekisakov-imj/flutter-design-engineer/tree/main/benchmarks/connected-command-center" data-analytics-event="benchmark_artifact_open" data-analytics-placement="benchmark">Inspect the protocol <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/musabekisakov-imj/flutter-design-engineer/blob/main/benchmarks/connected-command-center/rubric.md" data-analytics-event="benchmark_artifact_open" data-analytics-placement="rubric">Read the scoring rubric <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="benchmark-status" aria-label="Benchmark publication status">
+          <div><span>Baseline</span><strong>Pending</strong><small>No score published</small></div>
+          <div><span>With skills</span><strong>Pending</strong><small>No score published</small></div>
+          <p><b>Protocol ready</b><span>Results publish only after validation, blinded scoring, and artifact review.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="technical section shell" aria-labelledby="technical-title">
+      <div class="technical-copy"><p class="section-kicker">Open-source proof</p><h2 id="technical-title">Trust the files you can inspect.</h2><p>Every specialist is self-contained, source-visible, and backed by repository validation. No hidden prompt service sits between your agent and the workflow.</p><a href="https://github.com/musabekisakov-imj/flutter-design-engineer/tree/main/skills" data-analytics-event="github_open" data-analytics-placement="trust">Inspect all skill sources <span aria-hidden="true">↗</span></a></div>
+      <div class="technical-grid"><article><strong>SKILL.md</strong><p>Explicit triggers, workflow, guardrails, and verification steps.</p></article><article><strong>Progressive references</strong><p>Focused context loads only when the active task needs it.</p></article><article><strong>Repository validation</strong><p>Packaging and cross-reference checks run before release.</p></article><article><strong>Rendered QA</strong><p>Widget tests and committed goldens expose visual regressions.</p></article></div>
+    </section>
+
     <section class="install section" id="install" aria-labelledby="install-title">
       <div class="shell">
         <div class="section-heading"><h2 id="install-title">Install where you work.</h2><p>The cross-agent command is recommended. Direct paths provide exact scope control.</p></div>
@@ -143,24 +178,19 @@
             <button id="agent-tab-cursor" role="tab" aria-selected="false" aria-controls="agent-panel-cursor" tabindex="-1"><img src="assets/agents/cursor.png" width="44" height="44" alt=""><span>Cursor</span><small>Project</small></button>
           </div>
           <div class="agent-panels">
-            <article id="agent-panel-claude" role="tabpanel" aria-labelledby="agent-tab-claude"><h3>Claude Code</h3><p>Install for all projects in <code>~/.claude/skills</code>.</p><div class="command"><code id="claude-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination ~/.claude/skills</code><button type="button" data-copy-target="claude-command">Copy</button></div></article>
-            <article id="agent-panel-codex" role="tabpanel" aria-labelledby="agent-tab-codex"><h3>OpenAI Codex</h3><p>Install for all projects in <code>~/.codex/skills</code>.</p><div class="command"><code id="codex-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination ~/.codex/skills</code><button type="button" data-copy-target="codex-command">Copy</button></div></article>
-            <article id="agent-panel-gemini" role="tabpanel" aria-labelledby="agent-tab-gemini"><h3>Gemini CLI</h3><p>Install inside the current project at <code>.gemini/skills</code>.</p><div class="command"><code id="gemini-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination .gemini/skills</code><button type="button" data-copy-target="gemini-command">Copy</button></div></article>
-            <article id="agent-panel-cursor" role="tabpanel" aria-labelledby="agent-tab-cursor"><h3>Cursor</h3><p>Install inside the current project at <code>.cursor/skills</code>.</p><div class="command"><code id="cursor-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination .cursor/skills</code><button type="button" data-copy-target="cursor-command">Copy</button></div></article>
+            <article id="agent-panel-claude" role="tabpanel" aria-labelledby="agent-tab-claude"><h3>Claude Code</h3><p>Install for all projects in <code>~/.claude/skills</code>.</p><div class="command"><code id="claude-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination ~/.claude/skills</code><button type="button" data-copy-target="claude-command" data-install-route="claude" data-analytics-placement="installer">Copy</button></div></article>
+            <article id="agent-panel-codex" role="tabpanel" aria-labelledby="agent-tab-codex"><h3>OpenAI Codex</h3><p>Install for all projects in <code>~/.codex/skills</code>.</p><div class="command"><code id="codex-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination ~/.codex/skills</code><button type="button" data-copy-target="codex-command" data-install-route="codex" data-analytics-placement="installer">Copy</button></div></article>
+            <article id="agent-panel-gemini" role="tabpanel" aria-labelledby="agent-tab-gemini"><h3>Gemini CLI</h3><p>Install inside the current project at <code>.gemini/skills</code>.</p><div class="command"><code id="gemini-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination .gemini/skills</code><button type="button" data-copy-target="gemini-command" data-install-route="gemini" data-analytics-placement="installer">Copy</button></div></article>
+            <article id="agent-panel-cursor" role="tabpanel" aria-labelledby="agent-tab-cursor"><h3>Cursor</h3><p>Install inside the current project in <code>.cursor/skills</code>.</p><div class="command"><code id="cursor-command">d="$(mktemp -d)" &amp;&amp; git clone --depth 1 https://github.com/musabekisakov-imj/flutter-design-engineer.git "$d" &amp;&amp; python3 "$d/scripts/install.py" --destination .cursor/skills</code><button type="button" data-copy-target="cursor-command" data-install-route="cursor" data-analytics-placement="installer">Copy</button></div></article>
           </div>
         </div>
         <p class="session-note">Start a new agent session after installation so the skills are discovered.</p>
       </div>
     </section>
 
-    <section class="technical section shell" aria-labelledby="technical-title">
-      <div class="technical-copy"><p class="section-kicker">Technical proof</p><h2 id="technical-title">Trust the files you can inspect.</h2><p>Every specialist is self-contained, source-visible, and backed by repository validation. No hidden prompt service sits between your agent and the workflow.</p><a href="https://github.com/musabekisakov-imj/flutter-design-engineer/tree/main/skills">Inspect all skill sources <span aria-hidden="true">↗</span></a></div>
-      <div class="technical-grid"><article><strong>SKILL.md</strong><p>Explicit triggers, workflow, guardrails, and verification steps.</p></article><article><strong>Progressive references</strong><p>Focused context loads only when the active task needs it.</p></article><article><strong>Repository validation</strong><p>Packaging and cross-reference checks run before release.</p></article><article><strong>Rendered QA</strong><p>Widget tests and committed goldens expose visual regressions.</p></article></div>
-    </section>
-
     <section class="final-cta shell" aria-labelledby="final-title">
       <h2 id="final-title">Give your agent the full Flutter workflow.</h2>
-      <div class="command command-primary"><span aria-hidden="true">$</span><code id="final-command">npx skills add musabekisakov-imj/flutter-design-engineer</code><button type="button" data-copy-target="final-command">Copy</button></div>
+      <div class="command command-primary"><span aria-hidden="true">$</span><code id="final-command">npx skills add musabekisakov-imj/flutter-design-engineer</code><button type="button" data-copy-target="final-command" data-install-route="all" data-analytics-placement="final">Copy command</button></div>
     </section>
   </main>
 

@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from scripts.install import install
-from scripts.validate_repository import ROOT, validate, validate_benchmark_manifest
+from scripts.validate_repository import ROOT, validate, validate_benchmark_manifest, validate_site_contract
 
 
 class RepositoryValidationTest(unittest.TestCase):
@@ -21,6 +21,9 @@ class RepositoryValidationTest(unittest.TestCase):
             errors = validate_benchmark_manifest(manifest, root)
             self.assertTrue(any("missing model" in error for error in errors))
             self.assertTrue(any("requires evidence" in error for error in errors))
+
+    def test_site_contract_is_valid(self) -> None:
+        self.assertEqual(validate_site_contract(ROOT), [])
 
 
 class InstallerTest(unittest.TestCase):

@@ -4,6 +4,12 @@ const copyStatus = document.querySelector("#copy-status");
 const menuButton = document.querySelector(".menu-button");
 const primaryNav = document.querySelector("#primary-nav");
 
+function track(name, properties = {}) {
+  if (window.fdeAnalytics && typeof window.fdeAnalytics.track === "function") {
+    window.fdeAnalytics.track(name, properties);
+  }
+}
+
 function setupTablist(tablist) {
   const tabs = [...tablist.querySelectorAll(':scope > [role="tab"]')];
   const panels = tabs
@@ -92,6 +98,10 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
       button.textContent = "Copied";
       button.classList.add("is-copied");
       if (copyStatus) copyStatus.textContent = "Copied to clipboard.";
+      track("install_copy", {
+        route: button.dataset.installRoute,
+        placement: button.dataset.analyticsPlacement,
+      });
     } catch {
       button.textContent = "Select text";
       if (copyStatus) copyStatus.textContent = "Clipboard access failed. Select the command and copy it manually.";
@@ -101,6 +111,15 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
       button.textContent = original;
       button.classList.remove("is-copied");
     }, 2000);
+  });
+});
+
+document.querySelectorAll("[data-analytics-event]").forEach((element) => {
+  element.addEventListener("click", () => {
+    track(element.dataset.analyticsEvent, {
+      placement: element.dataset.analyticsPlacement,
+      audience: element.dataset.analyticsAudience,
+    });
   });
 });
 

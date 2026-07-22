@@ -15,6 +15,16 @@ BENCHMARK_REQUIRED_FIELDS = (
     "model", "model_version", "run_date", "starter_commit", "host",
     "budget", "retry_policy",
 )
+SITE_SECTION_ORDER = ("audiences", "workflow", "skills", "evidence", "benchmark", "install")
+SITE_EVENTS = {
+    "install_copy", "verified_results_open", "benchmark_artifact_open",
+    "github_open", "audience_path_select", "install_success_help_open",
+}
+PRODUCT_STUDIO_IMAGES = {
+    "phone-workspace.png", "phone-audit.png", "phone-system.png",
+    "phone-adaptive.png", "phone-visualQa.png", "phone-release.png",
+    "phone-error.png", "tablet-workspace.png",
+}
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -64,8 +74,47 @@ def validate_benchmark_manifest(path: Path, benchmark_root: Path) -> list[str]:
     return errors
 
 
+def validate_site_contract(root: Path) -> list[str]:
+    errors: list[str] = []
+    html_path = root / "docs" / "index.html"
+    analytics_path = root / "docs" / "assets" / "analytics-adapter.js"
+    if not html_path.exists():
+        return ["docs/index.html: missing website entry point"]
+    html = html_path.read_text(encoding="utf-8")
+
+    positions = [html.find(f'id="{section}"') for section in SITE_SECTION_ORDER]
+    if any(position < 0 for position in positions):
+        missing = [section for section, position in zip(SITE_SECTION_ORDER, positions) if position < 0]
+        errors.append(f"docs/index.html: missing required sections {missing}")
+    elif positions != sorted(positions):
+        errors.append("docs/index.html: conversion sections are out of approved order")
+
+    image_root = root / "docs" / "assets" / "product-studio"
+    for name in PRODUCT_STUDIO_IMAGES:
+        if f'assets/product-studio/{name}' not in html:
+            errors.append(f"docs/index.html: missing Product Studio evidence {name}")
+        if not (image_root / name).exists():
+            errors.append(f"docs/assets/product-studio: missing {name}")
+
+    if "No score published" not in html or "Protocol ready" not in html:
+        errors.append("docs/index.html: benchmark pending state must forbid implied results")
+    if "analytics-adapter.js" not in html:
+        errors.append("docs/index.html: missing analytics adapter")
+    if not analytics_path.exists():
+        errors.append("docs/assets/analytics-adapter.js: missing analytics adapter")
+    else:
+        analytics = analytics_path.read_text(encoding="utf-8")
+        missing_events = sorted(event for event in SITE_EVENTS if f'"{event}"' not in analytics)
+        if missing_events:
+            errors.append(f"docs/assets/analytics-adapter.js: missing events {missing_events}")
+        if "localStorage" in analytics or "document.cookie" in analytics:
+            errors.append("docs/assets/analytics-adapter.js: persistent client storage is not allowed")
+    return errors
+
+
 def validate(root: Path = ROOT) -> list[str]:
     errors: list[str] = []
+    errors.extend(validate_site_contract(root))
     descriptions: dict[str, str] = {}
     skill_dirs = sorted((root / "skills").glob("*"))
     if not skill_dirs:
